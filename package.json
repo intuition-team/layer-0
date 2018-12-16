@@ -1,0 +1,8 @@
+{
+  "name": "intuition-base",
+  "version": "1.0.0",
+  "description": "База для проектов Интуиции.",
+  "repository": "https://gitlab.com/mkalygin/intuition-base.git",
+  "author": "Дизайн-бюро Интуиция",
+  "license": "MIT"
+}
