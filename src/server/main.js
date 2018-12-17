@@ -38,5 +38,6 @@ app.use('/', router);
 app.listen(config.port, config.host, (error) => {
   if (error) throw error;
 
+  // eslint-disable-next-line
   console.log(`Listening at ${url}...`);
 });

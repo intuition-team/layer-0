@@ -1,10 +1,8 @@
-const path = require('path');
 const chokidar = require('chokidar');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('../../../build/dev.webpack.config');
 const config = require('../config');
-const Module = require('module');
 
 const watch = (app) => {
   const compiler = webpack(webpackConfig);
@@ -19,7 +17,7 @@ const watch = (app) => {
   // It reloads a page with help of LiveReloadPlugin.
   app.use(webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    ...config.webpack
+    ...config.webpack,
   }));
 
   // Also watch views and use LiveReload plugin's server

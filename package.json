@@ -11,7 +11,8 @@
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
     "clear": "rimraf static/main*",
-    "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js"
+    "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
+    "lint": "eslint --ext .jsx,.js src"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -20,6 +21,9 @@
     "chokidar": "^2.0.4",
     "cross-env": "^5.2.0",
     "css-loader": "^2.0.1",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
