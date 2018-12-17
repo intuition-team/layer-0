@@ -1,0 +1,23 @@
+@import 'base/variables';
+
+footer {
+  display:         flex;
+  flex-direction:  row;
+  flex-wrap:       wrap;
+  justify-content: flex-start;
+  width:           100vw;
+  padding:         40px 10vw;
+  font-size:       0.9em;
+
+  .word {
+    margin: 2px 10px;
+
+    @each $color in $footer-word-colors {
+      $i: index($footer-word-colors, $color);
+
+      &:nth-child(#{$i}) {
+        color: $color;
+      }
+    }
+  }
+}

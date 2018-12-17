@@ -1,0 +1,19 @@
+main {
+  padding:      40px 5vw;
+  margin-right: 20vw;
+  font-size:    1.2em;
+  line-height:  1.3em;
+
+  .bubbles {
+    position: absolute;
+    left:     100%;
+    top:      0;
+    bottom:   0;
+    width:    20vw;
+
+    .bubble {
+      position:      absolute;
+      border-radius: 50%;
+    }
+  }
+}

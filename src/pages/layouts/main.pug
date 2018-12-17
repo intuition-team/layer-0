@@ -1,0 +1,15 @@
+doctype html
+
+html
+  head
+    title Интуиция
+    block stylesheets
+      link(rel='stylesheet', href='./main.css')
+  body
+    include ../partials/header.pug
+    main
+      block content
+    include ../partials/footer.pug
+
+    block javascripts
+      script(src='./main.js')
