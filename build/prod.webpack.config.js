@@ -2,13 +2,12 @@ const path = require('path');
 const dotenv = require('dotenv');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 dotenv.load();
 
 module.exports = {
-  mode: 'development',
-  devtool: 'eval',
+  mode: 'production',
+  devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: path.resolve('src', 'scripts', 'main.js'),
   output: {
@@ -30,8 +29,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new LiveReloadPlugin({
-      appendScriptTag: true,
+    new webpack.ProgressPlugin({
+      profile: false,
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -40,10 +39,5 @@ module.exports = {
   ],
   stats: {
     colors: true,
-    hash: false,
-    assets: false,
-    chunks: false,
-    modules: false,
-    children: false,
   },
 };

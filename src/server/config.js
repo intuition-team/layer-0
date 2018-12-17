@@ -17,16 +17,4 @@ module.exports = {
 
   // Public directory with static files.
   static: path.resolve(__dirname, '../../static'),
-
-  // Webpack Dev Middleware settings.
-  webpack: {
-    stats: {
-      colors: true,
-      hash: false,
-      assets: false,
-      chunks: false,
-      modules: false,
-      children: false,
-    },
-  },
 };
