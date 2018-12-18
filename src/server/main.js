@@ -17,6 +17,7 @@ if (config.isDevelopment) {
 // Use Pug as template engine.
 app.set('views', config.views);
 app.set('view engine', 'pug');
+app.locals.basedir = config.views;
 
 // Log every request.
 app.use(morgan('combined'));
