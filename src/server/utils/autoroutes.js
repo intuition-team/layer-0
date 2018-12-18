@@ -1,22 +1,30 @@
+const path = require('path');
 const globby = require('globby');
 const config = require('../config');
 
-const mapEndpoint = (rules, path) => {
+const mapEndpoint = (rules, filename) => {
   const keys = Object.keys(rules);
-  const match = keys.find(key => new RegExp(key).test(path));
+  const match = keys.find(key => new RegExp(key).test(filename));
 
-  return match ? path.replace(new RegExp(match), rules[match]) : path;
+  return match ? filename.replace(new RegExp(match), rules[match]) : filename;
 };
 
 const autoroutes = (router, rules = {}) => {
   if (config.autoroutes) {
-    globby(config.autoroutes).then(paths => {
-      paths
-        .map(path => path.replace(config.views, ''))
-        .map(path => path.replace(/\.[^/.]+$/, ''))
-        .forEach(path => {
-          const endpoint = mapEndpoint(rules, path);
-          const view = path.substring(1);
+    globby(config.autoroutes).then(filenames => {
+      filenames
+        .map(filename =>
+          path
+            .resolve(filename)
+            .replace(config.views, '')
+            .replace(/\.[^/.]+$/, '')
+            .replace(/\\/g, '/')
+        )
+        .map(filename => filename.replace(config.views, ''))
+        .map(filename => filename.replace(/\.[^/.]+$/, ''))
+        .forEach(filename => {
+          const endpoint = mapEndpoint(rules, filename);
+          const view = filename.substring(1);
 
           router.get(endpoint, (req, res) => {
             res.render(view);
