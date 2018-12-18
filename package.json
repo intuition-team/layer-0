@@ -12,7 +12,9 @@
     "build": "yarn && yarn clear && yarn webpack",
     "clear": "rimraf static/main*",
     "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
-    "lint": "eslint --ext .jsx,.js src"
+    "lint": "yarn eslint && yarn stylelint",
+    "eslint": "eslint --ext .jsx,.js src",
+    "stylelint": "stylelint \"src/**/*.scss\" --syntax scss"
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
@@ -35,6 +37,9 @@
     "rimraf": "2.6.2",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
+    "stylelint": "^9.9.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-scss": "^3.4.1",
     "webpack": "4.27.1",
     "webpack-cli": "3.1.2",
     "webpack-dev-middleware": "3.4.0",
