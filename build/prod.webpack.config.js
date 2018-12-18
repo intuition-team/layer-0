@@ -9,7 +9,7 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
-  entry: path.resolve('src', 'scripts', 'main.js'),
+  entry: [path.resolve('src', 'scripts', 'main.js')],
   output: {
     path: path.resolve('static'),
     publicPath: '/',

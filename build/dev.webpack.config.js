@@ -2,14 +2,16 @@ const path = require('path');
 const dotenv = require('dotenv');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
+const PrettierPlugin = require('prettier-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 dotenv.load();
 
 module.exports = {
   mode: 'development',
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   context: path.resolve(__dirname, '..'),
-  entry: path.resolve('src', 'scripts', 'main.js'),
+  entry: [path.resolve('src', 'scripts', 'main.js')],
   output: {
     path: path.resolve('static'),
     publicPath: '/',
@@ -29,6 +31,8 @@ module.exports = {
     ],
   },
   plugins: [
+    new ErrorOverlayPlugin(),
+    new PrettierPlugin(),
     new LiveReloadPlugin({
       appendScriptTag: true,
     }),

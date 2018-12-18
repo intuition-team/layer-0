@@ -20,9 +20,9 @@
   @font-face {
     font-family: $family;
     src: font-url('#{$family}.woff2') format('woff2'),
-         font-url('#{$family}.woff') format('woff'),
-         font-url('#{$family}.ttf') format('ttf');
+      font-url('#{$family}.woff') format('woff'),
+      font-url('#{$family}.ttf') format('ttf');
     font-weight: $weight;
-    font-style:  $style;
+    font-style: $style;
   }
 }
