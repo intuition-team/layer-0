@@ -4,7 +4,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('../../../build/dev.webpack.config');
 const config = require('../config');
 
-const watch = (app) => {
+const watch = app => {
   const compiler = webpack(webpackConfig);
   const watcher = chokidar.watch(config.views);
   const livereload = webpackConfig.plugins.find(plugin => 'server' in plugin);
@@ -15,10 +15,12 @@ const watch = (app) => {
 
   // Build and watch scripts and styles with Webpack Dev Middleware.
   // It reloads a page with help of LiveReloadPlugin.
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    ...config.webpack,
-  }));
+  app.use(
+    webpackDevMiddleware(compiler, {
+      publicPath: webpackConfig.output.publicPath,
+      ...config.webpack,
+    })
+  );
 
   // Also watch views and use LiveReload plugin's server
   // to reload a page.

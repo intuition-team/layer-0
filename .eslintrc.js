@@ -1,6 +1,11 @@
 module.exports = {
   extends: [
     'airbnb-base',
+    'prettier',
+  ],
+
+  plugins: [
+    'prettier'
   ],
 
   env: {
@@ -16,6 +21,7 @@ module.exports = {
   },
 
   rules: {
+    'prettier/prettier': 'error',
     'no-mixed-operators': 'off',
     'global-require': 'off',
     'class-methods-use-this': 'off',

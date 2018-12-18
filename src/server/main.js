@@ -35,7 +35,7 @@ app.use('/', express.static(config.static));
 app.use('/', router);
 
 // Start server listening.
-app.listen(config.port, config.host, (error) => {
+app.listen(config.port, config.host, error => {
   if (error) throw error;
 
   // eslint-disable-next-line
