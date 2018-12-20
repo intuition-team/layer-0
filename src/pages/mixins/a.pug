@@ -1,0 +1,7 @@
+mixin a(activeClass='active')
+  if isLinkActive(attributes.href)
+    span(class=activeClass)&attributes(attributes)
+      block
+  else
+    a&attributes(attributes)
+      block

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const router = require('./router');
+const helpers = require('./helpers');
 const config = require('./config');
 
 // Initialize Express app.
@@ -28,6 +29,9 @@ app.use(bodyParser.json());
 
 // Parse cookies for every request.
 app.use(cookieParser());
+
+// Setup view helpers.
+app.use(helpers());
 
 // Serve static files.
 app.use('/', express.static(config.static));
