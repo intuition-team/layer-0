@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const router = require('./router');
 const helpers = require('./helpers');
+const { notFound } = require('./middlewares');
 const config = require('./config');
 
 // Initialize Express app.
@@ -38,6 +39,9 @@ app.use('/', express.static(config.static));
 
 // Mount routes.
 app.use('/', router);
+
+// Show 404 page.
+app.use(notFound());
 
 // Start server listening.
 app.listen(config.port, config.host, error => {
