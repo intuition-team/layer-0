@@ -1,15 +1,23 @@
+include /mixins/meta
+
 doctype html
 
 html
   head
-    title Интуиция
+    block meta
+      +meta()
+
     block stylesheets
-      link(rel='stylesheet', href='./main.css')
+      link(rel='stylesheet', href=assetPath('/assets/main.css'))
   body
-    include ../partials/header.pug
+    block header
+      include /partials/header.pug
+
     main
       block content
-    include ../partials/footer.pug
+
+    block footer
+      include /partials/footer.pug
 
     block javascripts
-      script(src='./main.js')
+      script(src=assetPath('/assets/main.js'))

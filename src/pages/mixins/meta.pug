@@ -1,0 +1,48 @@
+mixin meta()
+  -const host = attributes['host'] || 'https://intuition.team';
+  -const site = attributes['site'] || 'Дизайн-бюро «Интуиция»';
+  -const title = `${attributes['title'] || 'Дизайн-бюро «Интуиция»'} | ${site}`;
+  -const description = attributes['description'] || 'Творческое объединение дизайнеров, программистов и редакторов. Создаём информационные продукты — сайты, веб-приложения, фирменные стили, многостраничные издания.';
+  -const url = attributes['url'] || `${host}${req.originalUrl}`;
+  -const author = attributes['author'] || 'Дизайн-бюро «Интуиция»';
+
+  -const ogType = attributes['og-type'] || 'website';
+  -const ogSiteName = attributes['og-site-name'] || site;
+  -const ogTitle = attributes['og-title'] || title;
+  -const ogDescription = attributes['og-description'] || description;
+  -const ogUrl = attributes['og-url'] || url;
+
+  -const ogImage = `${host}${attributes['og-image'] || '/images/poster.jpg'}`;
+  -const ogImageType = attributes['og-image-type'] || 'image/jpg';
+  -const ogImageWidth = attributes['og-image-width'] || '2000';
+  -const ogImageHeight = attributes['og-image-height'] || '1145';
+  -const ogImageAlt = attributes['og-image-alt'] || title;
+
+  -const twitterTitle = attributes['twitter-title'] || title;
+  -const twitterDescription = attributes['twitter-description'] || description;
+  -const twitterUrl = attributes['twitter-url'] || url;
+
+  title=title
+
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible" content="IE=edge")
+  meta(name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=contain")
+
+  meta(name="description" content=description)
+  meta(name="author" content=author)
+
+  meta(property="og:type" content=ogType)
+  meta(property="og:site_name" content=ogSiteName)
+  meta(property="og:title" content=ogTitle)
+  meta(property="og:description" content=ogDescription)
+  meta(property="og:url" content=ogUrl)
+
+  meta(property="og:image" content=ogImage)
+  meta(property="og:image:type" content=ogImageType)
+  meta(property="og:image:width" content=ogImageWidth)
+  meta(property="og:image:height" content=ogImageHeight)
+  meta(property="og:image:alt" content=ogImageAlt)
+
+  meta(name="twitter:title" content=twitterTitle)
+  meta(name="twitter:description" content=twitterDescription)
+  meta(name="twitter:url" content=twitterUrl)

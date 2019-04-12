@@ -6,12 +6,15 @@
   "author": "Дизайн-бюро Интуиция",
   "license": "MIT",
   "scripts": {
-    "start": "yarn && npm-run-all --parallel open serve",
+    "start": "yarn && yarn clear && npm-run-all --parallel open serve",
     "open": "node src/server/utils/open.js",
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
-    "clear": "rimraf static/main*",
+    "clear": "rimraf static/assets",
     "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
+    "deploy": "yarn build && yarn copy && yarn restart",
+    "copy": "source .env && rsync -qazP $DEPLOY_FILES $DEPLOY_TARGET",
+    "restart": "source .env && ssh $DEPLOY_HOST $DEPLOY_RESTART",
     "lint": "yarn eslint && yarn stylelint",
     "eslint": "eslint --ext .jsx,.js src",
     "stylelint": "stylelint \"src/**/*.scss\" --syntax scss",
@@ -48,7 +51,8 @@
     "webpack": "4.27.1",
     "webpack-cli": "3.1.2",
     "webpack-dev-middleware": "3.4.0",
-    "webpack-livereload-plugin": "2.1.1"
+    "webpack-livereload-plugin": "2.1.1",
+    "webpack-manifest-plugin": "2.0.4"
   },
   "dependencies": {
     "@ganemone/dotenv-cli": "0.0.2",

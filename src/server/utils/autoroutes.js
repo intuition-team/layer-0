@@ -20,8 +20,6 @@ const autoroutes = (router, rules = {}) => {
             .replace(/\.[^/.]+$/, '')
             .replace(/\\/g, '/')
         )
-        .map(filename => filename.replace(config.views, ''))
-        .map(filename => filename.replace(/\.[^/.]+$/, ''))
         .forEach(filename => {
           const endpoint = mapEndpoint(rules, filename);
           const view = filename.substring(1);

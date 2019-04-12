@@ -12,9 +12,9 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: [path.resolve('src', 'scripts', 'main.js')],
   output: {
-    path: path.resolve('static'),
-    publicPath: '/',
+    path: path.resolve('static', 'assets'),
     filename: '[name].js',
+    publicPath: '/assets/',
   },
   module: {
     rules: [

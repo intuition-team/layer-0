@@ -18,9 +18,12 @@ module.exports = {
   // Public directory with static files.
   static: path.resolve(__dirname, '../../static'),
 
+  // Path to manifest file for production.
+  manifest: path.resolve(__dirname, '../../static/assets/manifest.json'),
+
   // Automatic routes generation globs.
   autoroutes: [
     path.resolve(__dirname, '../pages', '**/*.pug'),
-    '!**/{layouts,partials}/**/*.pug',
+    '!**/{layouts,partials,mixins}/**/*.pug',
   ],
 };
