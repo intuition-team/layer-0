@@ -6,7 +6,7 @@ const config = require('../config');
 
 const watch = app => {
   const compiler = webpack(webpackConfig);
-  const watcher = chokidar.watch(config.views);
+  const watcher = chokidar.watch(config.watch);
   const livereload = webpackConfig.plugins.find(plugin => 'server' in plugin);
 
   if (!livereload) {

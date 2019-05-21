@@ -21,6 +21,9 @@ module.exports = {
   // Path to manifest file for production.
   manifest: path.resolve(__dirname, '../../static/assets/manifest.json'),
 
+  // Additional files or directories to watch.
+  watch: [path.resolve(__dirname, '../pages')],
+
   // Automatic routes generation globs.
   autoroutes: [
     path.resolve(__dirname, '../pages', '**/*.pug'),
