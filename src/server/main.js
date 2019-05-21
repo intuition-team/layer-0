@@ -13,7 +13,7 @@ const url = `http://${config.host}:${config.port}`;
 
 // Watch file changes in development environment.
 if (config.isDevelopment) {
-  require('./utils/watch')(app);
+  require('./internals/watch')(app);
 }
 
 // Use Pug as template engine.

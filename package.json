@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn && yarn clear && npm-run-all --parallel open serve",
-    "open": "node src/server/utils/open.js",
+    "open": "node src/server/internals/open.js",
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
     "clear": "rimraf static/assets",

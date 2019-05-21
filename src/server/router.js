@@ -1,5 +1,5 @@
 const express = require('express');
-const autoroutes = require('./utils/autoroutes');
+const autoroutes = require('./internals/autoroutes');
 
 const router = express.Router();
 
