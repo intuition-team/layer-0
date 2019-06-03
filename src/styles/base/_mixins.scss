@@ -25,6 +25,7 @@
          font-url('#{$path}.woff2') format('woff2'),
          font-url('#{$path}.woff') format('woff'),
          font-url('#{$path}.ttf') format('truetype'),
+         font-url('#{$path}.otf') format('opentype'),
          font-url('#{$path}.svg#font') format('svg');
   }
 }
