@@ -10,14 +10,8 @@ html
     block stylesheets
       link(rel='stylesheet', href=assetPath('/assets/main.css'))
   body
-    block header
-      include /partials/header.pug
-
     main
       block content
-
-    block footer
-      include /partials/footer.pug
 
     block javascripts
       script(src=assetPath('/assets/main.js'))
