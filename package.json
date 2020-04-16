@@ -10,6 +10,7 @@
     "open": "node src/server/internals/open.js",
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
+    "build:static": "webpack --config ./build/static.webpack.config.js",
     "clear": "rimraf static/assets",
     "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
     "deploy": "yarn build && yarn copy && yarn restart",
@@ -38,6 +39,8 @@
     "@babel/preset-env": "7.2.0",
     "babel-loader": "8.0.4",
     "chokidar": "2.0.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
     "cross-env": "5.2.0",
     "css-loader": "2.0.1",
     "error-overlay-webpack-plugin": "0.1.5",
@@ -48,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-prettier": "3.0.0",
     "eslint-plugin-react": "7.11.0",
+    "html-webpack-plugin": "^4.2.0",
     "husky": "2.3.0",
     "lint-staged": "8.1.7",
     "mini-css-extract-plugin": "0.5.0",
@@ -56,6 +60,7 @@
     "npm-run-all": "4.1.5",
     "opn": "5.4.0",
     "prettier": "1.15.3",
+    "pug-loader": "^2.4.0",
     "rimraf": "2.6.2",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
@@ -80,7 +85,7 @@
     "normalize.css": "8.0.1",
     "pug": "2.0.3"
   },
-  "engines" : {
-    "node" : ">=8.9.0"
+  "engines": {
+    "node": ">=8.9.0"
   }
 }
