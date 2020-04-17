@@ -10,6 +10,7 @@
     "open": "node src/server/internals/open.js",
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
+    "build:static": "node build/static.js",
     "clear": "rimraf static/assets",
     "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
     "deploy": "yarn build && yarn copy && yarn restart",
