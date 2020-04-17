@@ -3,10 +3,10 @@ const pug = require('pug');
 const fs = require('fs');
 const globby = require('globby');
 const config = require('../src/server/config');
+const { assetPath } = require('../src/server/helpers/asset');
 
 const inputDir = config.views;
-const outputDir = '../site';
-const { assetPath } = require('../src/server/helpers/asset');
+const outputDir = path.resolve(__dirname, '..', 'site');
 
 const mapRelativeFilename = filename => path.basename(filename, '.pug');
 
@@ -22,7 +22,6 @@ const compileHtmlFile = fileName => {
 
   fs.writeFile(`${outputDir}/${fileName}.html`, html, err => {
     if (err) throw err;
-    console.log(`${fileName}.html has been saved!`);
   });
 };
 
