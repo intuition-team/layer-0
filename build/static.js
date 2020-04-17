@@ -6,6 +6,7 @@ const config = require('../src/server/config');
 
 const inputDir = config.views;
 const outputDir = '../site';
+const { assetPath } = require('../src/server/helpers/asset');
 
 const mapRelativeFilename = filename => path.basename(filename, '.pug');
 
@@ -14,7 +15,10 @@ const compileHtmlFile = fileName => {
     basedir: inputDir,
     pretty: true,
   });
-  const html = compileToFunction();
+  const html = compileToFunction({
+    req: { originalUrl: '' },
+    assetPath,
+  });
 
   fs.writeFile(`${outputDir}/${fileName}.html`, html, err => {
     if (err) throw err;
