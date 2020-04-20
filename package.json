@@ -10,6 +10,7 @@
     "open": "node src/server/internals/open.js",
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
+    "build:static": "yarn build && cross-env NODE_ENV=production node ./build/static.js",
     "clear": "rimraf static/assets",
     "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
     "deploy": "yarn build && yarn copy && yarn restart",
@@ -51,6 +52,7 @@
     "husky": "2.3.0",
     "lint-staged": "8.1.7",
     "mini-css-extract-plugin": "0.5.0",
+    "ncp": "2.0.0",
     "node-sass": "4.13.1",
     "nodemon": "1.18.9",
     "npm-run-all": "4.1.5",
@@ -74,13 +76,14 @@
     "body-parser": "1.18.3",
     "cookie-parser": "1.4.3",
     "express": "4.16.4",
+    "fs-extra": "^9.0.0",
     "globby": "9.0.0",
     "jquery": "3.3.1",
     "morgan": "1.9.1",
     "normalize.css": "8.0.1",
     "pug": "2.0.3"
   },
-  "engines" : {
-    "node" : ">=8.9.0"
+  "engines": {
+    "node": ">=8.9.0"
   }
 }
