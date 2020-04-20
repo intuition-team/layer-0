@@ -3,7 +3,7 @@ mixin meta()
   -const site = attributes['site'] || 'Дизайн-бюро «Интуиция»';
   -const title = `${attributes['title'] || 'Дизайн-бюро «Интуиция»'} | ${site}`;
   -const description = attributes['description'] || 'Творческое объединение дизайнеров, программистов и редакторов. Создаём информационные продукты — сайты, веб-приложения, фирменные стили, многостраничные издания.';
-  -const url = attributes['url'] || `${host}${req.originalUrl}`;
+  -const url = attributes['url'] || `${host}${req.url}`;
   -const author = attributes['author'] || 'Дизайн-бюро «Интуиция»';
 
   -const ogType = attributes['og-type'] || 'website';
