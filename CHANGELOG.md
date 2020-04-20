@@ -1,8 +1,8 @@
 ### v1.4.0 (21.04.2020; mkalygin)
 
-- Add support for latest Node.js versions.
-- Remove example code which was polluting new projects.
-- Add possibility to build a static site.
+- добавлена поддержка для последних версий Node.js;
+- удалён код примеров, который засорял новые проекты;
+- добавлена возможность собирать статический сайт.
 
 ### v1.3.0 (05.06.2019; mkalygin)
 
