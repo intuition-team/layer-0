@@ -1,3 +1,9 @@
+### v1.4.0 (21.04.2020; mkalygin)
+
+- Add support for latest Node.js versions.
+- Remove example code which was polluting new projects.
+- Add possibility to build a static site.
+
 ### v1.3.0 (05.06.2019; mkalygin)
 
 - добавлен автоматический запуск prettier перед коммитом;
