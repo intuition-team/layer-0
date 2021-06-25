@@ -73,6 +73,7 @@
   },
   "dependencies": {
     "@ganemone/dotenv-cli": "0.0.2",
+    "@intuition.team/ids": "git+https://github.com/intuition-team/ids.git#master",
     "body-parser": "1.18.3",
     "cookie-parser": "1.4.3",
     "express": "4.16.4",
