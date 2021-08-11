@@ -1,0 +1,420 @@
+extends /layouts/main
+
+block content
+  .ids__wrapper.tmp-with-sidebar
+    section
+      a(href="/") ← Назад
+      .ids__stack-XS
+      h2#variables Переменные
+      p IDS позволяет настроить цветовую палитру и основные параметры типографики через css-переменные. 
+
+    section
+      h3#typography Типографика
+      p #[code --ids__font] — шрифт, по-умолчанию PT Root в начертаниях Regular, Medium и Bold.
+      p #[code --ids__density] — коэффициент плотности вёрстки.
+
+      p Размеры шрифта увеличиваются в заданных диапазонах на заданных ширинах экрана. По умолчанию это от 16 до 20 пикселей на компьютерах при ширине от 1000 до 1600 пикселей и нескалируемые 17 пикселей на телефонах при ширине от 320 до 768 пикселей.
+
+      p Заголовки увеличиваются умножением на коэффициент размерной сетки. Например, изначальное состояние 20px, коэффициент 1.5. Значит, следующий заголовок будет 30px. Следующий 45px.
+
+      p Основано на #[a(href='https://utopia.fyi/calculator') Утопии].
+
+      h4 Диапазоны
+      ul
+        //- li 
+        //-   code --fluid-min-width
+        //-   | — ширина экрана, с которой начинается растяжение шрифта
+        //- li 
+        //-   code --fluid-max-width
+        //-   | — ширина, на которой растяжение заканчивается
+        //- li 
+        //-   code --fluid-screen
+        //-   | — шрифт растягивается с этим параметром (100vw). если его зафиксировать в пикселях, не растягивается
+        li 
+          code --type-scale-desktop
+          | — коэффициент размерной сетки на компьютерах
+        li 
+          code --font-size-min
+          | — минимальный размер шрифта на компьютерах
+        li 
+          code --font-size-max
+          | — максимальный размер шрифта на компьютерах
+        li 
+          code --type-scale-mobile
+          | — коэффициент размерной сетки на телефонах
+        li 
+          code --font-size-min-mobile
+          | — размер шрифта мин телефон
+        li 
+          code --font-size-max-mobile
+          | — размер шрифта макс телефон
+      
+      h4 Размеры шрифта
+      p Получаются путём умножения #[code --step-0] на коэффициент размерной сетки #[code --type-scale-desktop] или #[code --type-scale-mobile]
+      ul
+        li
+          code --step-0
+          | — #[code h4], #[code p]. базовый шрифт, переменная с размером шрифта
+        li
+          code --step-1
+          | — h3
+        li
+          code --step-2
+          | — h2
+        li
+          code --step-3
+          | — h1
+
+
+    section
+      h3#color Цвет
+      p Цвета хранятся в виде трёх чисел RGB. Это позволяет гибко настраивать прозрачность.
+      aside
+        code --ids__text-RGB: 5, 5, 5;
+        code color: rgba(var(--ids__text-RGB), 0.7);
+      p Чтобы задавать цвета css-переменными, используется css-функция #[code RGB()] (капсом) вместо sass-функции #[code rgb()]:
+      aside
+        code color: RGB(var(--ids__text-RGB));
+      
+      h4 Основные
+      ul
+        li
+          code --ids__text-RGB
+          | — цвет текста
+        li
+          code --ids__link-RGB
+          | — цвет ссылки
+        li
+          code --ids__hover-RGB
+          | — цвет подсветки активных элементов при наведении курсора
+        li
+          code --ids__accent-RGB
+          | — цвет для кнопок и других кликабельных или активных элементов; отличается от цвета бренда, чтобы оставаться заметным среди брендовых иллюстраций
+        li
+          code --ids__surface-RGB
+          | — цвет для плашей, текстовых полей и других «поверхностей», лежащих «в другом визуальном слое»
+        
+      h4 Дополнительные
+      ul
+        li
+          code --ids__background-RGB
+          | — цвет фона
+        li
+          code --ids__main-RGB
+          | — узнаваемый цвет бренда; по умолчанию наследует #[code --ids__accent-RGB]
+        li
+          code --ids__code-RGB
+          | — цвет для выделения кода
+        li
+          code --ids__error-RGB
+          | — цвет для сообщений об ошибках
+        li
+          code --ids__success-RGB
+          | — цвет для сообщений об успешном выполнении
+        li
+          code --ids__outline-RGB
+          | — цвет обводки для элементов в фокусе; по умолчанию наследует #[code --ids__surface-RGB]
+      
+      h4 Для тёмных тем
+      ul
+        li
+          code --ids__on-accent-RGB
+          | — цвет текста на фоне цвета accent; по умолчанию наследует #[code --ids__background-RGB]
+        li
+          code --ids__on-main-RGB
+          | — цвет текста на фоне цвета main; по умолчанию наследует #[code --ids__background-RGB]
+        li
+          code --ids__on-surface-RGB
+          | — цвет текста на фоне цвета surface; по умолчанию наследует #[code --ids__text-RGB]
+      
+      p Полный список переменных:
+      aside
+        pre
+          p :root {
+          p   --ids__font: 'Root Ui', Arial, sans-serif;
+          p   --ids__density: 1.3;
+          p 
+          p   --type-scale-desktop: 1.5; //коэффициент увеличения шрифта десктоп
+          p   --font-size-min: 16; //размер шрифта мин десктоп
+          p   --font-size-max: 20; //размер шрифта макс десктоп
+          p 
+          p   --type-scale-mobile: 1.333; //коэффициент увеличения шрифта телефон
+          p   --font-size-min-mobile: 17; //размер шрифта мин телефон
+          p   --font-size-max-mobile: 17; //размер шрифта макс телефон
+          p 
+          p   //цвета
+          p   --ids__background-RGB: 255, 255, 255;
+          p   --ids__text-RGB: 5, 5, 5;
+          p   --ids__accent-RGB: 0, 0, 0;
+          p   --ids__main-RGB: var(--ids__accent-RGB);
+          p   --ids__surface-RGB: 245, 245, 245;
+          p   --ids__error-RGB: 240, 84, 95;
+          p   --ids__success-RGB: 84, 180, 140;
+          p   --ids__mark-RGB: 255, 248, 128;
+          p   --ids__code-RGB: 200, 0, 0;
+          p 
+          p   --ids__on-main-RGB: var(--ids__background-RGB);
+          p   --ids__on-accent-RGB: var(--ids__background-RGB);
+          p   --ids__on-surface-RGB: var(--ids__text-RGB);
+          p 
+          p   --ids__link-RGB: 0, 100, 240;
+          p   --ids__hover-RGB: 0, 220, 0;
+          p   --ids__outline-RGB: var(--ids__surface-RGB);
+          p }
+    
+    section
+      h2#components Компоненты 
+    
+    section
+      .ids__stack-XS
+      h6.tmp-section-title#headers Заголовки
+      
+      //- .ids__stack-XS
+      code.tmp-left-sidebar &lt;h1&gt;
+      h1 Полюбить свои цифры
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;h2&gt;
+      h2 Привычки скучных людей
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;h3&gt;
+      h3 Считать деньги с удовольствием
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;h4&gt;
+      h4 Раскладывать по полочкам и заработать на квартиру
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;h5&gt;
+      h5 Радовать себя и сделать ремонт
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;h6&gt;
+      h6 Получать кэшбек и развлекаться
+    
+    section
+      .ids__stack-XS
+      h6.tmp-section-title#editorial Редакционные форматы
+      code.tmp-left-sidebar &lt;p&gt;
+      p Винвестор работает с октября 2018 года. За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики.
+
+      .ids__stack-XS
+      code.tmp-left-sidebar p.ids__lead
+      .ids__lead В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
+
+    section
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;h2&gt;&lt;mark&gt;&lt;/h2&gt;
+      h2 Сколько может длиться <mark>финансовый кризис</mark>
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;p&gt;&lt;mark&gt;&lt;/p&gt;
+      p Вовсе не обязательно использовать все финансовые привычки сразу — они неплохо работают и по отдельности. Более того, финансовые привычки могут прижиться у людей <mark>любого возраста и с любым уровнем дохода</mark>, и тоже будут отлично работать.
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;blockquote&gt;
+      blockquote Основной принцип финансовой независимости — тратить меньше, чем зарабатываешь и инвестировать разницу
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;ol&gt;
+      ol
+        li Пункт номер 1
+        li Пункт номер 2
+        li Пункт номер 3
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;ul&gt;
+      ul
+        li Пункт номер 1
+        li Пункт номер 2
+        li Пункт номер 3
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;ul.checked&gt;
+      ul.checked
+        li Пункт номер 1
+        li Пункт номер 2
+        li Пункт номер 3
+
+      .ids__stack-XS
+      code.tmp-left-sidebar .ids__label
+      .ids__label Привычка №1
+
+      .ids__stack-XS
+      code.tmp-left-sidebar .ids__label-outline
+      .ids__label.ids__label-outline Просто прелестно
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;details&gt;
+      details
+        summary Винвестор работает с октября 2018 года
+        .ids__stack-XS
+        p За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
+
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;aside&gt;
+      aside
+        p Винвестор работает с октября 2018 года. За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
+
+
+    section
+      code.tmp-left-sidebar &lt;figure&gt;
+      figure
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;figcaption&gt;
+      figure
+        figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
+
+      .ids__stack-XS
+      p Иллюстрация с подписью:
+      figure
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+        figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
+
+    section
+      p Модификаторы
+      
+      code.tmp-left-sidebar .ids__figure__XXS
+      figure.ids__figure__XXS
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+
+      code.tmp-left-sidebar .ids__figure__XS
+      figure.ids__figure__XS
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+
+      code.tmp-left-sidebar .ids__figure__S
+      figure.ids__figure__S
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+
+    section
+      .ids__stack-S
+      h6.tmp-section-title#ui Элементы интерфейса
+
+      //- кнопка
+      .ids__stack-XS
+      code.tmp-left-sidebar &lt;button&gt;
+      button Отправить
+      
+      .ids__stack-XS
+      p Модификаторы:
+      
+      code.tmp-left-sidebar button.size-XS
+      button.size-XS Отправить
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar button.size-S
+      button.size-S Отправить
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar button.size-M
+      button.size-M Отправить
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar button.size-L
+      button.size-L Отправить
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar button.size-XL
+      button.size-XL Отправить
+
+      //- кнопка-ссылка
+      .ids__stack-S
+      code.tmp-left-sidebar a.ids__button-link
+      a.ids__button-link(href="/system.pug") Заполнить заявку
+
+      //- поле ввода
+      .ids__stack-S
+      code.tmp-left-sidebar &lt;input type="text"&gt;
+      input(type='text' placeholder='Например, ')
+      
+      .ids__stack-XS
+      p Модификаторы:
+      code.tmp-left-sidebar input.size-XS(type='text')
+      input.size-XS(type='text' placeholder='Например, ')
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar input.size-S(type='text')
+      input.size-S(type='text' placeholder='Например, ')
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar input.size-M(type='text')
+      input.size-M(type='text' placeholder='Например, ')
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar input.size-L(type='text')
+      input.size-L(type='text' placeholder='Например, ')
+      
+      .ids__stack-XS
+      code.tmp-left-sidebar input.size-XL(type='text')
+      input.size-XL(type='text' placeholder='Например, ')
+
+      //- поле ввода подчеркнутое
+      .ids__stack-S
+      code.tmp-left-sidebar .ids__input-text-line
+      input.ids__input-text-line(type='text' placeholder='Например, ')
+
+      //- текстовая зона
+      .ids__stack-S
+      code.tmp-left-sidebar &lt;textarea&gt;
+      textarea(placeholder='Например, ')
+
+      //- чекбокс
+      .ids__stack-S
+      code.tmp-left-sidebar .ids__checkbox
+      .ids__checkbox
+        input(type='checkbox' id="checkbox-sample")
+        label(for="checkbox-sample") Согласен, что данные обработаются
+
+      //- радио-группа
+      .ids__stack-S
+      code.tmp-left-sidebar .ids__radio
+      .ids__radio
+        input(type='radio' id='radio-sample-1' name='radio-sample')
+        label(for='radio-sample-1') Приобрести ПИФ
+        br
+        input(type='radio' id='radio-sample-2' name='radio-sample')
+        label(for='radio-sample-2') Купить обликацию
+        br
+        input(type='radio' id='radio-sample-3' name='radio-sample')
+        label(for='radio-sample-3') Копить деньги и ждать
+
+      .ids__stack-S
+      code.tmp-left-sidebar .ids__radiogroup-toggle
+      .ids__radiogroup-toggle
+        .ids__radiogroup-option
+          input(type='radio' id='option1' name='radio-toggle-sample' checked)
+          label(for='option1') Облигация
+        .ids__radiogroup-option
+          input(type='radio' id='option2' name='radio-toggle-sample')
+          label(for='option2') Акция
+        .ids__radiogroup-option
+          input(type='radio' id='option3' name='radio-toggle-sample')
+          label(for='option3') ПИФ
+        .ids__radiogroup-option
+          input(type='radio' id='option4' name='radio-toggle-sample')
+          label(for='option4') Вклад
+
+      .ids__stack-S
+      code.tmp-left-sidebar &lt;table&gt;
+      table
+        tr 
+          th Колонка1 
+          th Колонка2
+          th Колонка3 
+        tr 
+          td Колонка1
+          td Колонка2
+          td Колонка3
+        tr 
+          td Колонка1
+          td Колонка2
+          td Колонка3
+        tr 
+          td Колонка1
+          td Колонка2
+          td Колонка3
+
+      .ids__stack-L

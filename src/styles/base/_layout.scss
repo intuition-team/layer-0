@@ -12,3 +12,20 @@ body {
 main {
   position: relative;
 }
+
+.tmp-with-sidebar {
+  margin-left: 23%;
+}
+
+.tmp-left-sidebar {
+  position: absolute;
+  right: calc(100% + 1em);
+  text-align: right;
+  width: 100%;
+  max-width: fit-content;
+}
+
+.tmp-section-title {
+  letter-spacing: 0.2em;
+  color: RGB(var(--ids__link-RGB));
+}
