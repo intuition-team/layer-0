@@ -1,7 +1,7 @@
 extends /layouts/main
 
 block content
-  .ids__wrapper.tmp-with-sidebar
+  .ids__wrapper.tmp-with-sidebar(style="--ids__accent-RGB:155, 110, 220;")
     section
       a(href="/") ← Назад
       .ids__stack-XS
@@ -391,6 +391,16 @@ block content
       .tmp-left-sidebar
         code &lt;input type="text"&gt;
       input(type='text' placeholder='Например, ')
+
+      .ids__stack-XS
+      .tmp-left-sidebar
+        code .ids__form-error-message
+      .ids__form-error-message Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]
+      
+      .ids__stack-XS
+      .tmp-left-sidebar
+        code .ids__form-success-message
+      .ids__form-success-message Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста
       
       .ids__stack-XS
       p Модификаторы:
@@ -429,6 +439,19 @@ block content
       .tmp-left-sidebar
         code &lt;textarea&gt;
       textarea(placeholder='Например, ')
+      
+      //- селект
+      .ids__stack-S
+      .tmp-left-sidebar
+        code .ids__select
+      .ids__select
+        select
+          option Кошки
+          option Собаки
+          option Лягушки
+          option Кроты
+          option Хомяки
+          option Баклажаны
 
       //- чекбокс
       .ids__stack-S
@@ -468,6 +491,23 @@ block content
         .ids__radiogroup-option
           input(type='radio' id='option4' name='radio-toggle-sample')
           label(for='option4') Вклад
+
+      .ids__stack-S
+      .tmp-left-sidebar
+        code .ids__radiogroup-toggle.monochrome
+      .ids__radiogroup-toggle.monochrome
+        .ids__radiogroup-option
+          input(type='radio' id='option01' name='radio-toggle-mono-sample' checked)
+          label(for='option01') Облигация
+        .ids__radiogroup-option
+          input(type='radio' id='option02' name='radio-toggle-mono-sample')
+          label(for='option02') Акция
+        .ids__radiogroup-option
+          input(type='radio' id='option03' name='radio-toggle-mono-sample')
+          label(for='option03') ПИФ
+        .ids__radiogroup-option
+          input(type='radio' id='option04' name='radio-toggle-mono-sample')
+          label(for='option04') Вклад
 
       .ids__stack-S
       .tmp-left-sidebar
