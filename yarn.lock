@@ -599,7 +599,7 @@
 
 "@intuition.team/ids@git+https://github.com/intuition-team/ids.git#master":
   version "0.4.0"
-  resolved "git+https://github.com/intuition-team/ids.git#b0e1ea5b26a59be79670d7b4cda74b6343b1ce67"
+  resolved "git+https://github.com/intuition-team/ids.git#ea441d59590c727944fcf819e43069c6aac36f4a"
   dependencies:
     normalize.css "^8.0.1"
 

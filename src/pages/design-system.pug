@@ -1,10 +1,9 @@
 extends /layouts/main
-
 block content
   .ids__wrapper.tmp-with-sidebar(style="--ids__accent-RGB:155, 110, 220;")
     section
       a(href="/") ← Назад
-      .ids__stack-XS
+      .ids__stack.XS
       h2#variables Переменные
       p IDS позволяет настроить цветовую палитру и основные параметры типографики через css-переменные. 
 
@@ -70,8 +69,10 @@ block content
       h3#color Цвет
       p Цвета хранятся в виде трёх чисел RGB. Это позволяет гибко настраивать прозрачность.
       aside
-        code --ids__text-RGB: 5, 5, 5;
-        code color: rgba(var(--ids__text-RGB), 0.7);
+        code
+          pre
+            p --ids__text-RGB: 5, 5, 5;
+            p color: rgba(var(--ids__text-RGB), 0.7);
       p Чтобы задавать цвета css-переменными, используется css-функция #[code RGB()] (капсом) вместо sass-функции #[code rgb()]:
       aside
         code color: RGB(var(--ids__text-RGB));
@@ -180,68 +181,68 @@ block content
       h2#components Компоненты 
     
     section
-      .ids__stack-XS
+      .ids__stack.XS
       h6.tmp-section-title#headers Заголовки
       
-      //- .ids__stack-XS
+      //- .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h1&gt;
       h1 Полюбить свои цифры
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h2&gt;
       h2 Привычки скучных людей
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h3&gt;
       h3 Считать деньги с удовольствием
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h4&gt;
       h4 Раскладывать по полочкам и заработать на квартиру
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h5&gt;
       h5 Радовать себя и сделать ремонт
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h6&gt;
       h6 Получать кэшбек и развлекаться
     
     section
-      .ids__stack-XS
+      .ids__stack.XS
       h6.tmp-section-title#editorial Редакционные форматы
       .tmp-left-sidebar
         code &lt;p&gt;
       p Винвестор работает с октября 2018 года. За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики.
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code p.ids__lead
       .ids__lead В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
 
     section
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;h2&gt;&lt;mark&gt;&lt;/h2&gt;
       h2 Сколько может длиться <mark>финансовый кризис</mark>
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;p&gt;&lt;mark&gt;&lt;/p&gt;
       p Вовсе не обязательно использовать все финансовые привычки сразу — они неплохо работают и по отдельности. Более того, финансовые привычки могут прижиться у людей <mark>любого возраста и с любым уровнем дохода</mark>, и тоже будут отлично работать.
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;blockquote&gt;
       blockquote Основной принцип финансовой независимости — тратить меньше, чем зарабатываешь и инвестировать разницу
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;ol&gt;
       ol
@@ -249,7 +250,7 @@ block content
         li Пункт номер 2
         li Пункт номер 3
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;ul&gt;
       ul
@@ -257,7 +258,7 @@ block content
         li Пункт номер 2
         li Пункт номер 3
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;ul.checked&gt;
       ul.checked
@@ -265,25 +266,25 @@ block content
         li Пункт номер 2
         li Пункт номер 3
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code .ids__label
       .ids__label Привычка №1
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code .ids__label-outline
       .ids__label.ids__label-outline Просто прелестно
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;details&gt;
       details
         summary Винвестор работает с октября 2018 года
-        .ids__stack-XS
+        .ids__stack.XS
         p За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;aside&gt;
       aside
@@ -292,17 +293,17 @@ block content
 
     section
       .tmp-left-sidebar
-        code &lt;figure&gt;
+        code &lt;figure&gt;<br>&lt;img&gt;<br>&lt;/figure&gt;
       figure
         img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;figcaption&gt;
       figure
         figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
 
-      .ids__stack-XS
+      .ids__stack.XS
       p Иллюстрация с подписью:
       .tmp-left-sidebar
         code &lt;figure&gt;<br>&lt;img&gt;&lt;figcaption&gt;<br>&lt;/figure&gt;
@@ -314,148 +315,148 @@ block content
       p Модификаторы
       
       .tmp-left-sidebar
-        code .ids__figure__XXS
-      figure.ids__figure__XXS
+        code .XXS
+      figure.XXS
         img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
 
       .tmp-left-sidebar
-        code .ids__figure__XS
-      figure.ids__figure__XS
+        code .XS
+      figure.XS
         img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
 
       .tmp-left-sidebar
-        code .ids__figure__S
-      figure.ids__figure__S
+        code .S
+      figure.S
         img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
 
     section
-      .ids__stack-S
+      .ids__stack.S
       h6.tmp-section-title#spacing Отступы
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code .ids__stack-XS
-      .ids__stack-XS.tmp-colorized-space
+        code .ids__stack.XS
+      .ids__stack.XS.tmp-colorized-space
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code .ids__stack-S
-      .ids__stack-S.tmp-colorized-space
+        code .ids__stack.S
+      .ids__stack.S.tmp-colorized-space
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code .ids__stack-M
-      .ids__stack-M.tmp-colorized-space
+        code .ids__stack.M
+      .ids__stack.M.tmp-colorized-space
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code .ids__stack-L
-      .ids__stack-L.tmp-colorized-space
+        code .ids__stack.L
+      .ids__stack.L.tmp-colorized-space
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code .ids__stack-XL
-      .ids__stack-XL.tmp-colorized-space
+        code .ids__stack.XL
+      .ids__stack.XL.tmp-colorized-space
     
     section
-      .ids__stack-S
+      .ids__stack.S
       h6.tmp-section-title#ui Элементы интерфейса
 
       //- кнопка
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code &lt;button&gt;
       button Отправить
       
-      .ids__stack-XS
+      .ids__stack.XS
       p Модификаторы:
       
       .tmp-left-sidebar
-        code button.size-XS
-      button.size-XS Отправить
+        code button.XS
+      button.XS Отправить
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code button.size-S
-      button.size-S Отправить
+        code button.S
+      button.S Отправить
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code button.size-M
-      button.size-M Отправить
+        code button.M
+      button.M Отправить
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code button.size-L
-      button.size-L Отправить
+        code button.L
+      button.L Отправить
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code button.size-XL
-      button.size-XL Отправить
+        code button.XL
+      button.XL Отправить
 
       //- кнопка-ссылка
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code a.ids__button-link
       a.ids__button-link(href="/system.pug") Заполнить заявку
 
       //- поле ввода
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code &lt;input type="text"&gt;
       input(type='text' placeholder='Например, ')
 
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code .ids__form-error-message
       .ids__form-error-message Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
         code .ids__form-success-message
       .ids__form-success-message Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста
       
-      .ids__stack-XS
+      .ids__stack.XS
       p Модификаторы:
       .tmp-left-sidebar
-        code input.size-XS(type='text')
-      input.size-XS(type='text' placeholder='Например, ')
+        code input.XS(type='text')
+      input.XS(type='text' placeholder='Например, ')
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code input.size-S(type='text')
-      input.size-S(type='text' placeholder='Например, ')
+        code input.S(type='text')
+      input.S(type='text' placeholder='Например, ')
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code input.size-M(type='text')
-      input.size-M(type='text' placeholder='Например, ')
+        code input.M(type='text')
+      input.M(type='text' placeholder='Например, ')
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code input.size-L(type='text')
-      input.size-L(type='text' placeholder='Например, ')
+        code input.L(type='text')
+      input.L(type='text' placeholder='Например, ')
       
-      .ids__stack-XS
+      .ids__stack.XS
       .tmp-left-sidebar
-        code input.size-XL(type='text')
-      input.size-XL(type='text' placeholder='Например, ')
+        code input.XL(type='text')
+      input.XL(type='text' placeholder='Например, ')
 
       //- поле ввода подчеркнутое
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code .ids__input-text-line
       input.ids__input-text-line(type='text' placeholder='Например, ')
 
       //- текстовая зона
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code &lt;textarea&gt;
       textarea(placeholder='Например, ')
       
       //- селект
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code .ids__select
       .ids__select
@@ -468,7 +469,7 @@ block content
           option Баклажаны
 
       //- чекбокс
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code .ids__checkbox
       .ids__checkbox
@@ -476,7 +477,7 @@ block content
         label(for="checkbox-sample") Согласен, что данные обработаются
 
       //- радио-группа
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code .ids__radio
       .ids__radio
@@ -489,7 +490,7 @@ block content
         input(type='radio' id='radio-sample-3' name='radio-sample')
         label(for='radio-sample-3') Копить деньги и ждать
 
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code .ids__radiogroup-toggle
       .ids__radiogroup-toggle
@@ -506,7 +507,7 @@ block content
           input(type='radio' id='option4' name='radio-toggle-sample')
           label(for='option4') Вклад
 
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code .ids__radiogroup-toggle.monochrome
       .ids__radiogroup-toggle.monochrome
@@ -523,7 +524,7 @@ block content
           input(type='radio' id='option04' name='radio-toggle-mono-sample')
           label(for='option04') Вклад
 
-      .ids__stack-S
+      .ids__stack.S
       .tmp-left-sidebar
         code &lt;table&gt;
       table
@@ -543,5 +544,184 @@ block content
           td Колонка1
           td Колонка2
           td Колонка3
+    
+    section
+      .ids__stack.S
+      h6.tmp-section-title#grid Сетка
 
-      .ids__stack-L
+      .ids__grid.XXL.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.XXL
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.XL.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.XL
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.L.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.L
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.M.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.M
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.S.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.S
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.XS.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.XS
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.XXS.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.XXS
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__stack.S
+      .ids__grid.XXL
+        .tmp-left-sidebar
+          code .ids__grid
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.XXL.ids__grid-inset-S
+        .tmp-left-sidebar
+          code .ids__grid.ids__grid-inset-S
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.XXL.ids__grid-inset-M
+        .tmp-left-sidebar
+          code .ids__grid.ids__grid-inset-M
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+      
+      .ids__grid.XXL.ids__grid-inset-L
+        .tmp-left-sidebar
+          code .ids__grid.ids__grid-inset-L
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+        .ids__grid-cell
+          .tmp-colorized-space.surface .ids__grid-cell
+          .ids__stack.XS.tmp-colorized-space.surface
+    
+    section
+      .ids__stack.L
