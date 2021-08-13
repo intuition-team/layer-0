@@ -29,3 +29,7 @@ main {
   letter-spacing: 0.2em;
   color: RGB(var(--ids__link-RGB));
 }
+
+.tmp-colorized-space {
+  background-color: rgba(var(--ids__link-RGB), 0.3);
+}
