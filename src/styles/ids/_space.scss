@@ -1,0 +1,67 @@
+// Настройки
+
+$ids__button-padding-top: 0.4em !default;
+$ids__button-padding-bottom: 0.5em !default;
+$ids__button-padding-left-right: 1em !default;
+
+// Переменные
+
+$ids__padding: $ids__button-padding-top $ids__button-padding-left-right
+  $ids__button-padding-bottom;
+$ids__micro-padding: 0 calc(var(--ids__density) * 0.2em);
+
+// Миксины
+
+@mixin ids__default-padding {
+  padding: calc(var(--ids__density) * 0.75em);
+}
+
+// Компоненты
+
+.ids__stack {
+  &.XS,
+  &-XS {
+    //LEGACY NAME
+    height: calc(var(--ids__density) * 1em);
+
+    @media screen and #{$ids__mobile} {
+      height: calc(var(--ids__density) * 1em / 3);
+    }
+  }
+  &.S,
+  &-S {
+    //LEGACY NAME
+    height: calc(var(--ids__density) * 2em);
+
+    @media screen and #{$ids__mobile} {
+      height: calc(var(--ids__density) * 1em / 2);
+    }
+  }
+  &.M,
+  &-M {
+    //LEGACY NAME
+    height: calc(var(--ids__density) * 4em);
+
+    @media screen and #{$ids__mobile} {
+      height: calc(var(--ids__density) * 1em);
+    }
+  }
+  &.L,
+  &-L {
+    //LEGACY NAME
+    height: calc(var(--ids__density) * 8em);
+
+    @media screen and #{$ids__mobile} {
+      height: calc(var(--ids__density) * 2em);
+    }
+  }
+  &.XL,
+  &-XL {
+    //LEGACY NAME
+    height: calc(var(--ids__density) * 16em);
+
+    @media screen and #{$ids__mobile} {
+      height: calc(var(--ids__density) * 4em);
+    }
+  }
+}

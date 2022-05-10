@@ -1,8 +1,7 @@
-@import 'node_modules/@intuition.team/ids/ids';
+@import 'ids/all';
 @import 'base/all';
 @import 'tmp-styles';
 
-// настройка IDS https://github.com/intuition-team/ids
 :root {
   --ids__font: 'Root Ui', Arial, sans-serif;
   --ids__density: 1.3;

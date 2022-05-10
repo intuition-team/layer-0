@@ -1,0 +1,309 @@
+:root {
+  --fluid-min-width: 1000;
+  --fluid-max-width: 1600;
+  --fluid-screen: 100vw; // шрифт растягивается с этим параметром. если его зафиксировать в пикс, не растягивается
+
+  --type-scale-desktop: 1.5; //коэффициент увеличения шрифта десктоп
+  --font-size-min: 16; //размер шрифта мин десктоп
+  --font-size-max: 20; //размер шрифта макс десктоп
+
+  --type-scale-mobile: 1.333; //коэффициент увеличения шрифта телефон
+  --font-size-min-mobile: 17; //размер шрифта мин телефон
+  --font-size-max-mobile: 17; //размер шрифта макс телефон
+
+  @media screen and #{$ids__desktop} {
+    --f-0-min: var(--font-size-min);
+    --f-0-max: var(--font-size-max);
+    --type-scale: var(--type-scale-desktop);
+  }
+
+  @media screen and #{$ids__mobile} {
+    --f-0-min: var(--font-size-min-mobile);
+    --f-0-max: var(--font-size-max-mobile);
+    --type-scale: var(--type-scale-mobile);
+  }
+
+  @include typoVariables();
+}
+
+// на ширине экрана меньше 1000px шрифт не уменьшается
+@media screen and (max-width: 1000px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-min-width) * 1px);
+
+    @include typoVariables();
+  }
+}
+
+// на ширине больше 1350 шрифт не увеличивается
+@media screen and (min-width: 1600px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+
+    @include typoVariables();
+  }
+}
+
+@media screen and #{$ids__mobile} {
+  :root {
+    --fluid-min-width: 320;
+    --fluid-max-width: 768;
+    --fluid-screen: 100vw;
+
+    @include typoVariables();
+  }
+}
+
+.ids {
+  section {
+    margin-top: calc(var(--ids__density) * 1.5em);
+
+    @media screen and #{$ids__mobile} {
+      margin-top: calc(var(--ids__density) * 1em / 2);
+    }
+  }
+
+  a {
+    color: RGB(var(--ids__link-RGB));
+    border-bottom: 1px solid rgba(var(--ids__link-RGB), 0.2);
+    text-decoration: none;
+
+    &:hover {
+      color: RGB(var(--ids__hover-RGB));
+      border-bottom: 1px solid rgba(var(--ids__hover-RGB), 0.2);
+    }
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: calc(var(--ids__density) * 0.4em);
+  }
+
+  .ids__lead {
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: var(--ids__density);
+    margin-bottom: calc(var(--ids__density) * 0.4em);
+
+    @media screen and #{$ids__mobile} {
+      font-size: 1em;
+      line-height: var(--ids__density);
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-weight: 600;
+
+    // Стиль зачеркивания заголовков маркером
+    mark {
+      background: none;
+      box-shadow: inset 0 -0.15em RGB(var(--ids__background-RGB)),
+        inset 0 -0.5em RGB(var(--ids__mark-RGB));
+    }
+  }
+
+  h1 {
+    font-size: var(--step-3);
+    line-height: calc(var(--ids__density) / 1.3);
+    margin-bottom: 0.4em;
+  }
+
+  h2 {
+    font-size: var(--step-2);
+    line-height: calc(var(--ids__density) / 1.2);
+    margin-bottom: 0.5em;
+  }
+
+  h3 {
+    font-size: var(--step-1);
+    line-height: calc(var(--ids__density) / 1.1);
+    margin-bottom: 0.6em;
+  }
+
+  h4 {
+    font-size: var(--step-0);
+    line-height: var(--ids__density);
+    margin-bottom: 0.6em;
+  }
+
+  h5 {
+    font-size: calc(var(--step-0) * 0.8);
+    line-height: var(--ids__density);
+    margin-bottom: 0.7em;
+  }
+
+  h6 {
+    font-size: calc(var(--step-0) * 0.6);
+    text-transform: uppercase;
+    line-height: var(--ids__density);
+    margin-bottom: 0.7em;
+  }
+
+  em,
+  i {
+  }
+
+  strong,
+  b {
+    font-weight: 600;
+  }
+
+  mark {
+    color: RGB(var(--ids__text-RGB));
+    background-color: RGB(var(--ids__mark-RGB));
+  }
+
+  ul,
+  ol {
+    margin: 0 0 calc(var(--ids__density) * 0.75em) 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      margin-bottom: calc(var(--ids__density) * 0.5em);
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: none;
+      padding-left: calc(var(--ids__density) * 0.75em);
+
+      &:before {
+        position: absolute;
+        left: 0;
+        content: '⋅ ';
+      }
+    }
+
+    &.checked {
+      li {
+        &:before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          width: 0.7em;
+          height: 0.7em;
+        }
+      }
+    }
+  }
+
+  ol {
+    li {
+      list-style: decimal inside none;
+    }
+  }
+
+  blockquote {
+    font-size: 1.4em;
+    line-height: var(--ids__density);
+    margin: 0;
+    padding-left: calc(var(--ids__density) * 0.75em);
+    margin-bottom: calc(var(--ids__density) * 1em);
+  }
+
+  aside {
+    margin: 0;
+    margin-bottom: calc(var(--ids__density) * 0.75em);
+    background: RGB(var(--ids__surface-RGB));
+    padding: calc(var(--ids__density) * 0.75em);
+    padding-right: calc(var(--ids__density) * 2em);
+    border-radius: $ids__radius;
+
+    @media screen and #{$ids__mobile} {
+      padding-right: calc(var(--ids__density) * 0.75em);
+    }
+  }
+
+  code {
+    display: inline-block;
+    font-weight: 500;
+    padding: $ids__micro-padding;
+    background: RGB(var(--ids__surface-RGB));
+    color: RGB(var(--ids__code-RGB));
+  }
+
+  pre {
+    margin: 0;
+  }
+
+  a.button {
+  }
+
+  figure {
+    margin: 0 0 calc(var(--ids__density) * 0.5em) 0;
+
+    &.XXS,
+    &.ids__figure__XXS {
+      //LEGACY NAME
+      width: 25%;
+    }
+    &.XS,
+    &.ids__figure__XS {
+      //LEGACY NAME
+      width: 50%;
+    }
+    &.S,
+    &.ids__figure__S {
+      //LEGACY NAME
+      width: 75%;
+    }
+
+    figcaption {
+      margin-top: calc(var(--ids__density) * 0.25em);
+      font-size: 0.8em;
+      line-height: var(--ids__density);
+      opacity: 0.7;
+    }
+  }
+
+  details {
+    padding: 0.5em;
+    cursor: pointer;
+    // border: 1px solid rgba(var(--ids__text-RGB), 0.1);
+    border-radius: $ids__radius;
+
+    summary {
+      padding-bottom: $ids__micro-padding;
+    }
+  }
+
+  .ids__error-color {
+    color: RGB(var(--ids__error-RGB));
+  }
+
+  .ids__success-color {
+    color: RGB(var(--ids__success-RGB));
+  }
+
+  .ids__marginal-note {
+  }
+
+  .ids__footnote {
+  }
+
+  .ids__label {
+    display: inline-block;
+    padding: $ids__micro-padding;
+    background-color: RGB(var(--ids__accent-RGB));
+    color: RGB(var(--ids__on-accent-RGB));
+    border-radius: $ids__radius-S;
+
+    &.ids__label-outline {
+      background-color: RGB(var(--ids__on-accent-RGB));
+      color: RGB(var(--ids__text-RGB));
+      border: 2px solid RGB(var(--ids__accent-RGB));
+    }
+
+    &.ids__label-S {
+      font-size: 0.9em;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.ids__divider-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(var(--ids__text-RGB), 0.2);
+  margin-bottom: calc(var(--ids__density) * 1em);
+}
+
+.ids__admin-form {
+  width: 100%;
+}
+
+.ids__error-toast,
+.ids__success-toast {
+  position: relative;
+  display: block;
+  width: 20em;
+  padding: $ids__padding;
+  border-radius: $ids__radius;
+  margin-bottom: calc(var(--ids__density) * 1em);
+}
+
+.ids__error-toast {
+  background-color: rgba(var(--ids__error-RGB), 0.15);
+  color: RGB(var(--ids__error-RGB));
+}
+
+.ids__success-toast {
+  background-color: rgba(var(--ids__success-RGB), 0.15);
+  color: RGB(var(--ids__success-RGB));
+}
