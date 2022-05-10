@@ -64,3 +64,15 @@
     }
   }
 }
+
+.ids code {
+  font-family: 'PT Mono', monospace;
+}
+
+.flex-wrap {
+  display: flex;
+
+  > * {
+    margin-right: 1em;
+  }
+}
