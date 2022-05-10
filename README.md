@@ -1,13 +1,30 @@
+# Layer-0
+
+Layer 0 — это шаблон проектов Интуиции с Pug, SCSS, jquery и со встроенным css-фреймворком.
+
 ## Подготовка среды
 
 ### Mac OS
 
+0. Если у вас мак с процессором M1, то сначала нужно переключить Терминал в режим Rosetta (или сделать его копию. Подробнее [в статье](https://www.courier.com/blog/tips-and-tricks-to-setup-your-apple-m1-for-development))
+
+- идем в Applications > Utilites
+- кликаем ПКМ по Terminal.app > Get info > галочка Open using Rosetta
+
+Сейчас проект не запускается без таких махинаций из-за того, что используется старая версия Node.js, которая не поддерживает архитектуру маков с M1.
+
 1. Установить [Homebrew](https://brew.sh):
     ```shell
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-2. Установить [Node.js](https://nodejs.org/en/) и [Yarn](https://yarnpkg.com/lang/en/):
+2. Установить [Node.js](https://nodejs.org/en/) через менеджер версий ноды
+    ```shell
+    brew install n
+    n 12
+    ```
+
+3. и [Yarn](https://yarnpkg.com/lang/en/):
     ```shell
     brew install yarn
     ```
