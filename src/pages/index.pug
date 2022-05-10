@@ -7,8 +7,53 @@ block content
   .ids__wrapper
     .ids__text
       section
-        h2 Новый сайт! 
+        p #[mark Это главная страница — можно удалить текст и делать свою]
 
-        p Layer 0 — это шаблон проекта Интуиции. В него встроены всякие штуки и <a href="/design-system">дизайн-система IDS</a>.
+        .ids__stack.M
+
+        h1 Новый сайт! 
+        p Layer 0 — это шаблон проектов Интуиции. В основе шаблонизатор #[a(href='https://pugjs.org/api/getting-started.html') Pug] для html-разметки, #[a(href='https://sass-lang.com/documentation/syntax#scss') SCSS] для css-стилей, #[a(href='https://jquery.com') jQuery] для яваскрипта. Есть набор готовых компонентов сайта в виде css-фреймворка — #[a(href='/design-system') дизайн-системы].
+
+        .ids__stack.XS
+        h2 #[a(href='/design-system') Дизайн-система]
+        p Посмотреть перечень компонентов
+
+        .ids__stack.XS
+        h2 Куда класть картинки
+        p Картинки кладём в папку #[code /static/images/]. Адреса картинок будут начинаться с #[code /images/], например:
+        aside
+          code img(src="/images/poster.jpg")
+
+        .ids__stack.XS
+        h2 Как подключать шрифты
+
+        h3 файлами
+        p Файлы шрифтов кладём в папку #[code /static/fonts/], а потом подставляем название шрифта и имя файла из папки внутри файла #[code /styles/base/_fonts.scss] в миксин:
+        aside
+          code #{`@include font-face('Open Sans', 'open-sans-regular');`}
         
-        p Это главная страница — можно удалить текст и делать своё. Когда-нибудь вытащим сюда примеры вёрстки всяких штук, но точно не сегодня. 
+        p Миксин выглядит так:
+        aside
+          code #{`font-face($family, $path, $weight: normal, $style: normal)`}
+        p #[code $family] — имя шрифтовой семьи, будет использоваться внутри css-стилей, чтобы включить нужный шрифт. #[code font-family: 'Open Sans';]
+        p #[code $path] — имя файла из папки #[code /static/fonts/] без расширения. Одновременно подключаться все расширения. #[i хз как написать]
+        p #[code $weight] — жирность шрифта. По умолчанию #[code normal]. Для двух начертаний можно указать #[code normal] и #[code bold]. #[code font-weight: bold;] 
+        p Если начертаний больше двух, использовать цифры, например: 100, 200, 400. #[code font-weight: 400;] 
+        p #[code $style] — наклон шрифта, normal и italic. По умолчанию #[code normal]. #[code font-style: italic;]
+
+        .ids__stack.XS
+        h3 через Гугл фонтс
+        p подключается через link внутри #[code src/pages/layouts/main.pug]
+        aside
+          code
+            pre
+              p block stylesheets
+              p   #{`link(rel="preconnect" href="https://fonts.googleapis.com")`}
+              p   #{`link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)`}
+              p   #{`link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet")`}
+
+        .ids__stack.XS
+        h2 Как создавать страницы и их url
+        p ну там создаем файл #[code page.pug]. Если в корневой папке, то урл /page. Если внутри какой-то папки, например folder, то /folder/page
+
+        .ids__stack.L
