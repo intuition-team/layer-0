@@ -1,5 +1,6 @@
 @import 'node_modules/@intuition.team/ids/ids';
 @import 'base/all';
+@import 'tmp-styles';
 
 // настройка IDS https://github.com/intuition-team/ids
 :root {
@@ -25,7 +26,7 @@
   --ids__error-RGB: 240, 84, 95;
   --ids__success-RGB: 84, 180, 140;
   --ids__mark-RGB: 255, 248, 128;
-  --ids__code-RGB: 200, 0, 0;
+  --ids__code-RGB: 65, 95, 155;
 
   --ids__on-main-RGB: var(--ids__background-RGB);
   --ids__on-accent-RGB: var(--ids__background-RGB);
