@@ -8,10 +8,8 @@ Layer 0 — это шаблон проектов Интуиции с Pug, SCSS, 
 
 0. Если у вас мак с процессором M1, то сначала нужно переключить Терминал в режим Rosetta (или сделать его копию. Подробнее [в статье](https://www.courier.com/blog/tips-and-tricks-to-setup-your-apple-m1-for-development))
 
-- идем в Applications > Utilites
-- кликаем ПКМ по Terminal.app > Get info > галочка Open using Rosetta
-
-Сейчас проект не запускается без таких махинаций из-за того, что используется старая версия Node.js, которая не поддерживает архитектуру маков с M1.
+    - идем в Applications > Utilites
+    - кликаем ПКМ по Terminal.app > Get info > галочка Open using Rosetta
 
 1. Установить [Homebrew](https://brew.sh):
     ```shell
@@ -21,7 +19,7 @@ Layer 0 — это шаблон проектов Интуиции с Pug, SCSS, 
 2. Установить [Node.js](https://nodejs.org/en/) через менеджер версий ноды
     ```shell
     brew install n
-    n 12
+    sudo n 12
     ```
 
 3. и [Yarn](https://yarnpkg.com/lang/en/):
@@ -31,11 +29,20 @@ Layer 0 — это шаблон проектов Интуиции с Pug, SCSS, 
 
 ### Windows
 
+_Будет позже_
+
+<!-- 0. Подготовить Виндоус [по инструкции](https://github.com/asuh/front-end-windows):
+
+- подготовка виндоус (включить шифрование диска)
+- установить Chocolatey
+- установить WSL + ubuntu
+- установить Windows terminal -->
+
 1. [Скачать](https://nodejs.org/en/) и установить Node.js.
 
 2. [Скачать](https://yarnpkg.com/lang/en/docs/install/#windows-stable) и установить Yarn.
 
-## Как начать пользоваться
+## Как запустить
 
 1. Перейти в папку проекта.
 
