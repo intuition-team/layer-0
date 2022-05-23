@@ -57,10 +57,12 @@
 
   @media screen and #{$ids__mobile} {
     position: unset;
+    margin: 1em 0 2em;
   }
 
   ul {
     margin-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 }
 
