@@ -1,5 +1,9 @@
 .tmp-with-sidebar {
   margin-left: 23%;
+
+  @media screen and #{$ids__mobile} {
+    margin-left: 0;
+  }
 }
 
 .tmp-left-sidebar {
@@ -16,7 +20,6 @@
 }
 
 .tmp-colorized-space {
-  // padding: 0.5em;
   background-color: rgba(var(--ids__link-RGB), 0.3);
 
   &.surface {
@@ -24,7 +27,14 @@
   }
 
   &.ids__grid-cell {
-    border-right: 1px solid white;
+    border-right: 1px solid rgba(var(--ids__background-RGB), 1);
+    border-bottom: 1px solid rgba(var(--ids__background-RGB), 1);
+  }
+
+  @media screen and #{$ids__mobile} {
+    &.ids__stack.S {
+      height: 2em;
+    }
   }
 }
 
@@ -44,6 +54,10 @@
 .tmp-sidebar-menu {
   position: fixed;
   left: 1em;
+
+  @media screen and #{$ids__mobile} {
+    position: unset;
+  }
 
   ul {
     margin-top: 0.5em;
@@ -98,13 +112,27 @@ code pre {
 
 .flex-wrap {
   display: flex;
+  flex-direction: row;
+
+  @media screen and #{$ids__mobile} {
+    flex-direction: column;
+  }
 
   > * {
     margin-right: 1em;
+
+    @media screen and #{$ids__mobile} {
+      margin-right: 0;
+      margin-bottom: 1em;
+    }
   }
 }
 
 .code-example {
   // margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
+
+.ids__radiogroup-toggle {
+  flex-wrap: wrap;
 }
