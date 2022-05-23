@@ -12,6 +12,15 @@
     brew install yarn
     ```
 
+На устройствах Mac OS с процессором Silicon M1 после установки `Homebrew` необходимо устанавить[Yarn](https://yarnpkg.com/lang/en/) а затем заменить активную версию [Node.js](https://nodejs.org/en/) на версию 14 и установть пакет `node-sass` версии 4.14.1:
+
+    brew install yarn
+    brew search node
+    brew install node@14
+    brew unlink node
+    brew link --force --overwrite node@14
+    yarn add node-sass@4.14.1
+
 ### Windows
 
 1. [Скачать](https://nodejs.org/en/) и установить Node.js.
