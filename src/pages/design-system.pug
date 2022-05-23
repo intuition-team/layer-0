@@ -1,8 +1,6 @@
 extends /layouts/main
 block content
   .ids__wrapper.tmp-with-sidebar
-    
-    mark написать про .ids__full-width, .ids__wrapper, .ids__text
 
     .tmp-sidebar-menu
       ul
@@ -10,20 +8,21 @@ block content
           ul
             li #[a(href='#typography') Типографика]
               ul
-                li Диапазоны
-                li Размеры шрифта
-            li Цвет
+                li #[a(href='#ranges') Диапазоны]
+                li #[a(href='#font-sizes') Размеры шрифта]
+            li #[a(href='#color') Цвет]
               ul
-                li Основные
-                li Дополнительные
-                li Для темных тем
-        li Компоненты
+                li #[a(href='#main-colors') Основные]
+                li #[a(href='#secondary-colors') Дополнительные]
+                li #[a(href='#dark-theme-colors') Для темных тем]
+        li #[a(href='#components') Компоненты]
           ul
-            li Заголовки
-            li Редакционные форматы
-            li Элементы интерфейса
-            li Отступы
-            li Сетка
+            li #[a(href='#headers') Заголовки]
+            li #[a(href='#editorial') Редакционные форматы]
+            li #[a(href='#spacing') Элементы интерфейса]
+            li #[a(href='#ui') Отступы]
+            li #[a(href='#grid') Сетка]
+        li #[a(href='#wrappers') Контейнеры]
     
     section
       a(href="/") ← Назад
@@ -42,7 +41,7 @@ block content
 
       p Основано на #[a(href='https://utopia.fyi/calculator') Утопии].
 
-      h4 Диапазоны
+      h4#ranges Диапазоны
       ul
         //- li 
         //-   code --fluid-min-width
@@ -72,7 +71,7 @@ block content
           code --font-size-max-mobile
           | — размер шрифта макс телефон
       
-      h4 Размеры шрифта
+      h4#font-sizes Размеры шрифта
       p Получаются путём умножения #[code --step-0] на коэффициент размерной сетки #[code --type-scale-desktop] или #[code --type-scale-mobile]
       ul
         li
@@ -101,7 +100,7 @@ block content
       aside
         code color: RGB(var(--ids__text-RGB));
       
-      h4 Основные
+      h4#main-colors Основные
       ul
         li
           .tmp-color-sample(style="background-color: rgb(var(--ids__text-RGB));")
@@ -124,7 +123,7 @@ block content
           code --ids__surface-RGB
           | — цвет для плашей, текстовых полей и других «поверхностей», лежащих «в другом визуальном слое»
         
-      h4 Дополнительные
+      h4#secondary-colors Дополнительные
       ul
         li
           .tmp-color-sample.with-stroke(style="background-color: rgb(var(--ids__background-RGB));")
@@ -151,7 +150,7 @@ block content
           code --ids__outline-RGB
           | — цвет обводки для элементов в фокусе; по умолчанию наследует #[code --ids__surface-RGB]
       
-      h4 Для тёмных тем
+      h4#dark-theme-colors Для тёмных тем
       ul
         li
           .tmp-color-sample.with-stroke(style="background-color: rgb(var(--ids__on-accent-RGB));")
@@ -210,134 +209,174 @@ block content
       h6.tmp-section-title#headers Заголовки
       
       //- .ids__stack.XS
+      h1 Прочный дизайн
       .code-example
-        code h1 Полюбить свои цифры
-      h1 Полюбить свои цифры
+        aside
+          code h1 Прочный дизайн
       
       .ids__stack.XS
+      h2 Язык, который всё улучшает
       .code-example
-        code h2 Привычки скучных людей
-      h2 Привычки скучных людей
+        aside
+          code h2 Язык, который всё улучшает
       
       .ids__stack.XS
+      h3 Как придумать язык
       .code-example
-        code h3 Считать деньги с удовольствием
-      h3 Считать деньги с удовольствием
+        aside
+          code h3 Как придумать язык
       
       .ids__stack.XS
-      .code-example
-        code &lt;h4&gt;
       h4 Раскладывать по полочкам и заработать на квартиру
+      .code-example
+        aside
+          code h4 Смотрим сквозь дизайн
       
       .ids__stack.XS
+      h5 Хочет больше дизайна
       .code-example
-        code &lt;h5&gt;
-      h5 Радовать себя и сделать ремонт
+        aside
+          code h5 Хочет больше дизайна
       
       .ids__stack.XS
+      h6 Почему это бесит
       .code-example
-        code &lt;h6&gt;
-      h6 Получать кэшбек и развлекаться
+        aside
+          code h6 Почему это бесит
     
     section
       .ids__stack.XS
       h6.tmp-section-title#editorial Редакционные форматы
+      .ids__stack.XS
+      p Это такой специальный ярлычок для перекладывания ответственности. Бывает, что у клиента всегда всё срочно, он пытается хозяйничать в макетах, хочет больше дизайна и совместить все варианты в одном, пропадает, забывает, сомневается, говорит глупости, цепляется к ерунде, а потом приносит свой вариант и сам с собой не может договориться.
       .code-example
-        code &lt;p&gt;
-      p Винвестор работает с октября 2018 года. За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики.
+        aside
+          code p Это такой специальный ярлычок для перекладывания ответственности. Бывает, что у клиента всегда всё срочно, он пытается хозяйничать в макетах, хочет больше дизайна и совместить все варианты в одном, пропадает, забывает, сомневается, говорит глупости, цепляется к ерунде, а потом приносит свой вариант и сам с собой не может договориться.
 
       .ids__stack.XS
+      .ids__lead И отлично — он виноват, мы в домике, сидим и ждём лёгкого клиента, а пока временно страдаем.
       .code-example
-        code p.ids__lead
-      .ids__lead В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
+        aside
+          code p.ids__lead И отлично — он виноват, мы в домике, сидим и ждём лёгкого клиента, а пока временно страдаем.
 
     section
-      .ids__stack.XS
+      h2 Что происходит <mark>на самом деле</mark>
       .code-example
-        code &lt;h2&gt;&lt;mark&gt;&lt;/h2&gt;
-      h2 Сколько может длиться <mark>финансовый кризис</mark>
+        aside
+          code #{'h2 Что происходит #[mark на самом деле]'}
 
       .ids__stack.XS
+      p У кого-то могут включаться голоса: «это потому что ты неудачник и у тебя никогда ничего не получается и тебя все ненавидят но ты же ничего другого не умеешь всё равно так что ничего тут уже не сделаешь терпи». Это снова <mark>вот такой человек</mark>, только в обратную сторону.
       .code-example
-        code &lt;p&gt;&lt;mark&gt;&lt;/p&gt;
-      p Вовсе не обязательно использовать все финансовые привычки сразу — они неплохо работают и по отдельности. Более того, финансовые привычки могут прижиться у людей <mark>любого возраста и с любым уровнем дохода</mark>, и тоже будут отлично работать.
+        aside
+          code #{'p У кого-то могут включаться голоса: «это потому что ты неудачник и у тебя никогда ничего не получается и тебя все ненавидят но ты же ничего другого не умеешь всё равно так что ничего тут уже не сделаешь терпи». Это снова #[mark вот такой человек], только в обратную сторону.'}
 
       .ids__stack.XS
+      blockquote Ничего не надо делать
       .code-example
-        code &lt;blockquote&gt;
-      blockquote Основной принцип финансовой независимости — тратить меньше, чем зарабатываешь и инвестировать разницу
+        aside
+          code blockquote Ничего не надо делать
 
       .ids__stack.XS
-      .code-example
-        code &lt;ol&gt;
       ol
         li Пункт номер 1
         li Пункт номер 2
         li Пункт номер 3
+      .code-example
+        aside
+          code
+            pre
+              | ol
+              |   li Пункт номер 1
+              |   li Пункт номер 2
+              |   li Пункт номер 3
 
       .ids__stack.XS
-      .code-example
-        code &lt;ul&gt;
       ul
         li Пункт номер 1
         li Пункт номер 2
         li Пункт номер 3
+      .code-example
+        aside
+          code
+            pre
+              | ul
+              |   li Пункт номер 1
+              |   li Пункт номер 2
+              |   li Пункт номер 3
 
       .ids__stack.XS
-      .code-example
-        code &lt;ul.checked&gt;
       ul.checked
         li Пункт номер 1
         li Пункт номер 2
         li Пункт номер 3
+      .code-example
+        aside
+          code
+            pre
+              | ul.checked
+              |   li Пункт номер 1
+              |   li Пункт номер 2
+              |   li Пункт номер 3
 
       .ids__stack.XS
+      .ids__label(style="margin-bottom: 0.5em;") Привычка №1
       .code-example
-        code .ids__label
-      .ids__label Привычка №1
+        aside
+          code .ids__label Привычка №1
 
       .ids__stack.XS
+      .ids__label.ids__label-outline(style="margin-bottom: 0.5em;") Просто прелестно
       .code-example
-        code .ids__label-outline
-      .ids__label.ids__label-outline Просто прелестно
+        aside
+          code .ids__label.ids__label-outline Просто прелестно
 
       .ids__stack.XS
-      .code-example
-        code &lt;details&gt;
       details
-        summary Винвестор работает с октября 2018 года
+        summary Пара историй из жизни
         .ids__stack.XS
-        p За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
+        p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
+      .code-example
+        aside
+          code
+            pre
+              | details
+              |   summary Пара историй из жизни
+              |   p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
 
       .ids__stack.XS
-      .code-example
-        code &lt;aside&gt;
       aside
-        p Винвестор работает с октября 2018 года. За это время мы успели разработать транзакционную платформу и провести десятки рыночных исследований. В команде около 40 человек: программисты, специалисты по безопасности, профессиональные брокеры и инвесторы, менеджеры, дизайнеры, редакторы и аналитики. У нас два офиса — в Москве и Ростове-на-Дону.
+        p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
+      .code-example
+        aside
+          code
+            pre
+              | aside
+              |   p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
 
 
     section
-      .code-example
-        code &lt;figure&gt;<br>&lt;img&gt;<br>&lt;/figure&gt;
-      figure
-        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
-      
-      .ids__stack.XS
-      .code-example
-        code &lt;figcaption&gt;
-      figure
-        figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
-
-      .ids__stack.XS
       p Иллюстрация с подписью:
-      .code-example
-        code &lt;figure&gt;<br>&lt;img&gt;&lt;figcaption&gt;<br>&lt;/figure&gt;
       figure
         img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
         figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
+      .code-example
+        aside
+          code
+            pre
+              | figure
+              |   img(src="/images/example-pic.jpg")
+              |   figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
 
     section
       p Модификаторы
+
+      .code-example
+        aside
+          code
+            pre
+              | figure.XXS
+              |   img(src="/images/example-pic.jpg")
       
       .code-example
         code .XXS
@@ -389,118 +428,103 @@ block content
 
       //- кнопка
       .ids__stack.XS
+      button(style="margin-bottom: 0.5em;") Отправить
       .code-example
-        code button Отправить
-      button Отправить
+        aside
+          code button Отправить
       
       .ids__stack.XS
       p Модификаторы:
       
-      //- .code-example
-      //-   code button.XS Отправить
-      //- button.XS Отправить
-      
-      //- .ids__stack.XS
-      //- .code-example
-      //-   code button.S
-      //- button.S Отправить
-      
-      //- .ids__stack.XS
-      //- .code-example
-      //-   code button.M
-      //- button.M Отправить
-      
-      //- .ids__stack.XS
-      //- .code-example
-      //-   code button.L
-      //- button.L Отправить
-      
-      //- .ids__stack.XS
-      //- .code-example
-      //-   code button.XL
-      //- button.XL Отправить
       .flex-wrap
         div
-          code .XS
+          .code-example
+            code button.XS
           button.XS Отправить
         div
-          code .S
+          .code-example
+            code .S
           button.S Отправить
         div
-          code .M
+          .code-example
+            code .M
           button.M Отправить
         div
-          code .L
+          .code-example
+            code .L
           button.L Отправить
         div
-          code .XL
+          .code-example
+            code .XL
           button.XL Отправить
 
       //- кнопка-ссылка
       .ids__stack.S
+      a.ids__button-link(href="/design-system" style="margin-bottom: 0.5em;") Заполнить заявку
       .code-example
-        code a.ids__button-link(href="/design-system") Заполнить заявку
-      a.ids__button-link(href="/design-system") Заполнить заявку
+        aside
+          code a.ids__button-link(href="/design-system") Заполнить заявку
 
       //- поле ввода
       .ids__stack.S
+      input(type='text' placeholder='Текст' style="margin-bottom: 0.5em;")
       .code-example
-        code input(type='text' placeholder='Например, ')
-      input(type='text' placeholder='Например, ')
-
-      .ids__stack.XS
-      .code-example
-        code .ids__form-error-message
-      .ids__form-error-message Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]
-      
-      .ids__stack.XS
-      .code-example
-        code .ids__form-success-message
-      .ids__form-success-message Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста
+        aside
+          code input(type='text' placeholder='Текст')
       
       .ids__stack.XS
       p Модификаторы:
-      .code-example
-        code input.XS(type='text')
-      input.XS(type='text' placeholder='Например, ')
-      
-      .ids__stack.XS
-      .code-example
-        code input.S(type='text')
-      input.S(type='text' placeholder='Например, ')
-      
-      .ids__stack.XS
-      .code-example
-        code input.M(type='text')
-      input.M(type='text' placeholder='Например, ')
-      
-      .ids__stack.XS
-      .code-example
-        code input.L(type='text')
-      input.L(type='text' placeholder='Например, ')
-      
-      .ids__stack.XS
-      .code-example
-        code input.XL(type='text')
-      input.XL(type='text' placeholder='Например, ')
+      .flex-wrap
+        div
+          .code-example
+            code input.XS
+          input.XS(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .S
+          input.S(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .M
+          input.M(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .L
+          input.L(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .XL
+          input.XL(type='text' placeholder='Текст')
 
+      .ids__stack.S
+      .ids__form-error-message(style="margin-bottom: 1em;") Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]
+      .code-example
+        aside
+          code .ids__form-error-message #{'Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]'}
+      
+      .ids__stack.XS
+      .ids__form-success-message(style="margin-bottom: 1em;") Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста
+      .code-example
+        aside
+          code .ids__form-success-message #{'Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста'}
+      
       //- поле ввода подчеркнутое
       .ids__stack.S
+      input.ids__input-text-line(type='text' placeholder='Текст')
       .code-example
-        code .ids__input-text-line
-      input.ids__input-text-line(type='text' placeholder='Например, ')
+        aside
+          code input.ids__input-text-line(type='text' placeholder='Текст')
 
       //- текстовая зона
       .ids__stack.S
+      textarea(placeholder='Текст' style="margin-bottom: 0.5em;")
       .code-example
-        code &lt;textarea&gt;
-      textarea(placeholder='Например, ')
+        aside
+          code textarea(placeholder='Текст')
       
       //- селект
       .ids__stack.S
-      .code-example
-        code .ids__select
-      .ids__select
+      .ids__select(style="margin-bottom: 0.5em;")
         select
           option Кошки
           option Собаки
@@ -508,201 +532,245 @@ block content
           option Кроты
           option Хомяки
           option Баклажаны
+      .code-example
+        aside
+          code
+            pre
+              | .ids__select
+              |   select
+              |     option Кошки
+              |     option Собаки
+              |     option Лягушки
+              |     option Кроты
+              |     option Хомяки
+              |     option Баклажаны
 
       //- чекбокс
       .ids__stack.S
-      .code-example
-        code .ids__checkbox
-      .ids__checkbox
+      .ids__checkbox(style="margin-bottom: 0.5em;")
         input(type='checkbox' id="checkbox-sample")
         label(for="checkbox-sample") Согласен, что данные обработаются
+      .code-example
+        aside
+          code
+            pre
+              | .ids__checkbox
+              |   input(type='checkbox' id="checkbox-sample")
+              |   label(for="checkbox-sample") Согласен, что данные обработаются
 
       //- радио-группа
       .ids__stack.S
-      .code-example
-        code .ids__radio
-      .ids__radio
-        input(type='radio' id='radio-sample-1' name='radio-sample')
-        label(for='radio-sample-1') Приобрести ПИФ
+      .ids__radio(style="margin-bottom: 0.5em;")
+        input(type='radio' id='radio-sample-1' name='radio-sample' checked)
+        label(for='radio-sample-1') Курица
         br
         input(type='radio' id='radio-sample-2' name='radio-sample')
-        label(for='radio-sample-2') Купить обликацию
+        label(for='radio-sample-2') Рыба
         br
         input(type='radio' id='radio-sample-3' name='radio-sample')
-        label(for='radio-sample-3') Копить деньги и ждать
+        label(for='radio-sample-3') Ни то, ни другое
+      .code-example
+        aside
+          code
+            pre
+              | input(type='radio' id='radio-sample-1' name='radio-sample' checked)
+              | label(for='radio-sample-1') Курица
+              | br
+              | input(type='radio' id='radio-sample-2' name='radio-sample')
+              | label(for='radio-sample-2') Рыба
+              | br
+              | input(type='radio' id='radio-sample-3' name='radio-sample')
+              | label(for='radio-sample-3') Ни то, ни другое
 
       .ids__stack.S
-      .code-example
-        code .ids__radiogroup-toggle
-      .ids__radiogroup-toggle
-        .ids__radiogroup-option
-          input(type='radio' id='option1' name='radio-toggle-sample' checked)
-          label(for='option1') Облигация
-        .ids__radiogroup-option
-          input(type='radio' id='option2' name='radio-toggle-sample')
-          label(for='option2') Акция
-        .ids__radiogroup-option
-          input(type='radio' id='option3' name='radio-toggle-sample')
-          label(for='option3') ПИФ
-        .ids__radiogroup-option
-          input(type='radio' id='option4' name='radio-toggle-sample')
-          label(for='option4') Вклад
+      .flex-wrap
+        div
+          .code-example
+            code .ids__radiogroup-toggle
+          .ids__radiogroup-toggle
+            .ids__radiogroup-option
+              input(type='radio' id='option1' name='radio-toggle-sample' checked)
+              label(for='option1') Понедельник
+            .ids__radiogroup-option
+              input(type='radio' id='option2' name='radio-toggle-sample')
+              label(for='option2') Вторник
+            .ids__radiogroup-option
+              input(type='radio' id='option3' name='radio-toggle-sample')
+              label(for='option3') Среда
+            .ids__radiogroup-option
+              input(type='radio' id='option4' name='radio-toggle-sample')
+              label(for='option4') Четверг
+        div
+          .code-example
+            code .ids__radiogroup-toggle.monochrome
+          .ids__radiogroup-toggle.monochrome
+            .ids__radiogroup-option
+              input(type='radio' id='option01' name='radio-toggle-mono-sample' checked)
+              label(for='option01') Понедельник
+            .ids__radiogroup-option
+              input(type='radio' id='option02' name='radio-toggle-mono-sample')
+              label(for='option02') Вторник
+            .ids__radiogroup-option
+              input(type='radio' id='option03' name='radio-toggle-mono-sample')
+              label(for='option03') Среда
+            .ids__radiogroup-option
+              input(type='radio' id='option04' name='radio-toggle-mono-sample')
+              label(for='option04') Четверг
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__radiogroup-toggle
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option1' name='radio-toggle-sample' checked)
+              |     label(for='option1') Понедельник
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option2' name='radio-toggle-sample')
+              |     label(for='option2') Вторник
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option3' name='radio-toggle-sample')
+              |     label(for='option3') Среда
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option4' name='radio-toggle-sample')
+              |     label(for='option4') Четверг
 
       .ids__stack.S
-      .code-example
-        code .ids__radiogroup-toggle.monochrome
-      .ids__radiogroup-toggle.monochrome
-        .ids__radiogroup-option
-          input(type='radio' id='option01' name='radio-toggle-mono-sample' checked)
-          label(for='option01') Облигация
-        .ids__radiogroup-option
-          input(type='radio' id='option02' name='radio-toggle-mono-sample')
-          label(for='option02') Акция
-        .ids__radiogroup-option
-          input(type='radio' id='option03' name='radio-toggle-mono-sample')
-          label(for='option03') ПИФ
-        .ids__radiogroup-option
-          input(type='radio' id='option04' name='radio-toggle-mono-sample')
-          label(for='option04') Вклад
-
-      .ids__stack.S
-      .code-example
-        code &lt;table&gt;
       table
         tr 
-          th Колонка1 
-          th Колонка2
-          th Колонка3 
+          th Первая версия 
+          th Цикл
+          th Поток
         tr 
-          td Колонка1
-          td Колонка2
-          td Колонка3
+          td Лендинг, рекламная кампания
+          td Раздел сайта, редактор статей
+          td Иллюстрации для статей
         tr 
-          td Колонка1
-          td Колонка2
-          td Колонка3
+          td MVP
+          td Спринт
+          td Конвейер
         tr 
-          td Колонка1
-          td Колонка2
-          td Колонка3
+          td Минимальный
+          td Подробный
+          td Вместо плана — чёткий процесс
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | table
+              |   tr 
+              |     th Первая версия 
+              |     th Цикл
+              |     th Поток
+              |   tr 
+              |     td Лендинг, рекламная кампания
+              |     td Раздел сайта, редактор статей
+              |     td Иллюстрации для статей
+              |   tr 
+              |     td MVP
+              |     td Спринт
+              |     td Конвейер
+              |   tr 
+              |     td Минимальный
+              |     td Подробный
+              |     td Вместо плана — чёткий процесс
     
     section
       .ids__stack.S
       h6.tmp-section-title#grid Сетка
       p Модификатор размера регулирует количество колонок сетки. Например, XXL — 2 колонки, XL — 3, L — 4, и так далее до XXS — 8 колонок.
 
-      .code-example
-        aside
-          code 
-            pre
-              p .ids__grid.XXL
-              p   .ids__grid-cell
-              p   .ids__grid-cell
       .ids__grid.XXL.ids__grid-inset-S
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
+            p Текст в ячейке
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-      
+            p Текст в ячейке
       .code-example
-        code .ids__grid.XL
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-S
+              |   .ids__grid-cell
+              |     p Текст в ячейке
+              |   .ids__grid-cell
+              |     p Текст в ячейке
+      
       .ids__grid.XL.ids__grid-inset-S
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-      
       .code-example
-        code .ids__grid.L
+        aside
+          code .ids__grid.XL
+      
       .ids__grid.L.ids__grid-inset-S
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-      
       .code-example
-        code .ids__grid.M
+        aside
+          code .ids__grid.L
+      
       .ids__grid.M.ids__grid-inset-S
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-      
       .code-example
-        code .ids__grid.S
+        aside
+          code .ids__grid.M
+      
       .ids__grid.S.ids__grid-inset-S
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-      
       .code-example
-        code .ids__grid.XS
+        aside
+          code .ids__grid.S
+      
       .ids__grid.XS.ids__grid-inset-S
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
         .ids__grid-cell
-          .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-      
       .code-example
-        code .ids__grid.XXS
+        aside
+          code .ids__grid.XS
+      
       .ids__grid.XXS.ids__grid-inset-S
         .ids__grid-cell
           .tmp-colorized-space
@@ -728,48 +796,107 @@ block content
         .ids__grid-cell
           .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.XXS
       
+
+
       .ids__stack.S
-      p Правый отступ ячейки
-      .code-example
-        code .ids__grid
-      .ids__grid.XXL
-        .ids__grid-cell
-          .tmp-colorized-space
-          .ids__stack.S.tmp-colorized-space
-        .ids__grid-cell
-          .tmp-colorized-space
-          .ids__stack.S.tmp-colorized-space
+      p Правый и нижний отступ ячейки #[code .ids__grid-inset]
       
-      .code-example
-        code .ids__grid.ids__grid-inset-S
-      .ids__grid.XXL.ids__grid-inset-S
-        .ids__grid-cell
-          .tmp-colorized-space
-          .ids__stack.S.tmp-colorized-space
-        .ids__grid-cell
-          .tmp-colorized-space
-          .ids__stack.S.tmp-colorized-space
-      
-      .code-example
-        code .ids__grid.ids__grid-inset-M
-      .ids__grid.XXL.ids__grid-inset-M
-        .ids__grid-cell
-          .tmp-colorized-space
-          .ids__stack.S.tmp-colorized-space
-        .ids__grid-cell
-          .tmp-colorized-space
-          .ids__stack.S.tmp-colorized-space
-      
-      .code-example
-        code .ids__grid.ids__grid-inset-L
       .ids__grid.XXL.ids__grid-inset-L
-        .ids__grid-cell
+        .ids__grid-cell.tmp-colorized-space
           .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
-        .ids__grid-cell
+        .ids__grid-cell.tmp-colorized-space
           .tmp-colorized-space
           .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-L
+              |   .ids__grid-cell
+              |   .ids__grid-cell
+      
+      .ids__grid.XXL.ids__grid-inset-M
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-M
+      
+      .ids__grid.XXL.ids__grid-inset-S
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-S
+      
+      .ids__grid.XXL
+        .ids__grid-cell(style="border-right: 1px solid white;")
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell(style="border-right: 1px solid white;")
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL
+              |   .ids__grid-cell
+              |   .ids__grid-cell
     
+    section
+      .ids__stack.S
+      h2#wrappers Контейнеры
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper] — контейнер шириной 76%, автоматически выравнивается по центру маржинами
+      .ids__wrapper.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__full-width] — модификация с шириной 100% и паддингами
+      .tmp-colorized-space
+        .ids__wrapper.ids__full-width
+          .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__edge-to-edge] — модификация с шириной 100% без паддингов
+      .tmp-colorized-space
+        .ids__wrapper.ids__edge-to-edge
+          .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__shift-right] — контейнер шириной 76% с паддингом справа
+      .ids__wrapper.ids__shift-right.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__shift-left] — контейнер шириной 76% с паддингом слева
+      .ids__wrapper.ids__shift-left.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__text] — контейнер шириной 85%, в мобильной версии 100%
+      .ids__text.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+
+
     section
       .ids__stack.L

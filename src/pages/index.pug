@@ -25,9 +25,8 @@ block content
           code img(src="/images/poster.jpg")
 
         .ids__stack.XS
-        h2 Как подключать шрифты
+        h2 Куда класть шрифты
 
-        h3 файлами
         p Файлы шрифтов кладём в папку #[code /static/fonts/], а потом подставляем название шрифта и имя файла из папки внутри файла #[code /styles/base/_fonts.scss] в миксин:
         aside
           code #{`@include font-face('Open Sans', 'open-sans-regular');`}
@@ -40,20 +39,5 @@ block content
         p #[code $weight] — жирность шрифта. По умолчанию #[code normal]. Для двух начертаний можно указать #[code normal] и #[code bold]. #[code font-weight: bold;] 
         p Если начертаний больше двух, использовать цифры, например: 100, 200, 400. #[code font-weight: 400;] 
         p #[code $style] — наклон шрифта, normal и italic. По умолчанию #[code normal]. #[code font-style: italic;]
-
-        .ids__stack.XS
-        h3 через Гугл фонтс
-        p подключается через link внутри #[code src/pages/layouts/main.pug]
-        aside
-          code
-            pre
-              p block stylesheets
-              p   #{`link(rel="preconnect" href="https://fonts.googleapis.com")`}
-              p   #{`link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)`}
-              p   #{`link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet")`}
-
-        .ids__stack.XS
-        h2 Как создавать страницы и их url
-        p ну там создаем файл #[code page.pug]. Если в корневой папке, то урл /page. Если внутри какой-то папки, например folder, то /folder/page
 
         .ids__stack.L

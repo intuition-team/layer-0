@@ -16,10 +16,15 @@
 }
 
 .tmp-colorized-space {
+  // padding: 0.5em;
   background-color: rgba(var(--ids__link-RGB), 0.3);
 
   &.surface {
     background-color: rgba(var(--ids__surface-RGB), 1);
+  }
+
+  &.ids__grid-cell {
+    border-right: 1px solid white;
   }
 }
 
@@ -39,6 +44,10 @@
 .tmp-sidebar-menu {
   position: fixed;
   left: 1em;
+
+  ul {
+    margin-top: 0.5em;
+  }
 }
 
 .tmp-header {
@@ -51,6 +60,8 @@
 
   .logo {
     display: flex;
+    align-items: flex-start;
+    border: none;
 
     .img-wrapper {
       height: 1.5em;
@@ -62,11 +73,27 @@
         padding-right: 0.5em;
       }
     }
+
+    &:not(.active) {
+      span {
+        border-bottom: 1px solid rgba(var(--ids__link-RGB), 0.3);
+      }
+
+      &:hover {
+        border: none;
+
+        span {
+          border-bottom-color: rgba(var(--ids__hover-RGB), 0.3);
+        }
+      }
+    }
   }
 }
 
-.ids code {
+.ids code,
+code pre {
   font-family: 'PT Mono', monospace;
+  white-space: break-spaces;
 }
 
 .flex-wrap {
@@ -75,4 +102,9 @@
   > * {
     margin-right: 1em;
   }
+}
+
+.code-example {
+  // margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
