@@ -16,7 +16,7 @@ Layer 0 — это шаблон проектов Интуиции с Pug, SCSS, 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-2. Установить [Node.js](https://nodejs.org/en/) через менеджер версий ноды
+2. Установить [Node.js](https://nodejs.org/en/) 12 версии через менеджер версий ноды (проект работает с 10 или 12 версией)
     ```shell
     brew install n
     sudo n 12
