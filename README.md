@@ -11,18 +11,22 @@ Layer 0 — это шаблон проектов Интуиции с Pug, SCSS, 
     - идем в Applications > Utilites
     - кликаем ПКМ по Terminal.app > Get info > галочка Open using Rosetta
 
-1. Установить [Homebrew](https://brew.sh):
+1. Дать Терминалу доступ к диску, чтобы можно было переходить в любую папку: System preferences > Security & Privacy > Full Disk Access 
+    ![photo_2022-05-25 22 38 55](https://user-images.githubusercontent.com/29631343/170445902-d3897653-9f31-4402-8b93-88eb7beb19d9.jpeg)
+
+
+2. Установить [Homebrew](https://brew.sh):
     ```shell
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
-2. Установить [Node.js](https://nodejs.org/en/) 12 версии через менеджер версий ноды (проект работает с 10 или 12 версией)
+3. Установить [Node.js](https://nodejs.org/en/) 12 версии через менеджер версий ноды (проект работает с 10 или 12 версией)
     ```shell
     brew install n
     sudo n 12
     ```
 
-3. и [Yarn](https://yarnpkg.com/lang/en/):
+4. и [Yarn](https://yarnpkg.com/lang/en/):
     ```shell
     brew install yarn
     ```
