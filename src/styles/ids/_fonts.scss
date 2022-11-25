@@ -1,0 +1,37 @@
+$ids__fonts-path: '/assets/fonts' !default;
+
+:root {
+  --ids__font: 'Root UI', Arial, sans-serif;
+}
+
+@function font-url($path) {
+  @if (str-index($path, 'http') == 1) {
+    @return url($path);
+  } @else {
+    @return url('#{$ids__fonts-path}/#{$path}');
+  }
+}
+
+@function image-url($path) {
+  @return url(image-path($path));
+}
+
+// Подключение шрифтов по умолчанию из CDN
+@include font-face(
+  'Root UI',
+  'https://336416.selcdn.ru/winvestor-journal/fonts/PT_Root_UI_Regular',
+  400,
+  normal
+);
+@include font-face(
+  'Root UI',
+  'https://336416.selcdn.ru/winvestor-journal/fonts/PT_Root_UI_Medium',
+  500,
+  normal
+);
+@include font-face(
+  'Root UI',
+  'https://336416.selcdn.ru/winvestor-journal/fonts/PT_Root_UI_Bold',
+  700,
+  normal
+);

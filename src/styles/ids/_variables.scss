@@ -1,0 +1,15 @@
+$ids__mobile: '(max-width: 767px)';
+$ids__desktop: '(min-width: 768px)';
+
+:root {
+  --ids__density: 1.3;
+}
+
+$ids__radius: 0.3em !default;
+
+$ids__radius-XS: calc(#{$ids__radius} / 3);
+$ids__radius-S: calc(#{$ids__radius} / 2);
+$ids__radius-XL: calc(#{$ids__radius} * 2);
+$ids__radius-XL: 50%;
+
+$ids__images-path: '/images' !default;

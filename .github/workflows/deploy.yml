@@ -1,0 +1,51 @@
+name: Deploy CI
+on:
+  push:
+    branches:
+      - master
+      - staging
+jobs:
+  deploy:
+    name: Deploy application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '10.6.0'
+
+      - name: Node version
+        run: node -v
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build application
+        run: yarn build
+
+      - name: Copy application to the target server
+        uses: easingthemes/ssh-deploy@v2.1.1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-qazP --delete --exclude .env"
+          SOURCE: /
+          REMOTE_HOST: ${{ secrets.DEPLOY_HOST }}
+          REMOTE_USER: ${{ secrets.DEPLOY_USER }}
+          TARGET: ${{ secrets.DEPLOY_TARGET }}
+
+      - name: Restart application on the target server
+        uses: appleboy/ssh-action@v0.1.3
+        env:
+          DEPLOY_RESTART: ${{ secrets.DEPLOY_RESTART }}
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: DEPLOY_RESTART
+          script: bash -c "$DEPLOY_RESTART"

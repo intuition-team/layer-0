@@ -597,12 +597,6 @@
   dependencies:
     dotenv "^4.0.0"
 
-"@intuition.team/ids@git+https://github.com/intuition-team/ids.git#master":
-  version "0.4.0"
-  resolved "git+https://github.com/intuition-team/ids.git#b0e1ea5b26a59be79670d7b4cda74b6343b1ce67"
-  dependencies:
-    normalize.css "^8.0.1"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

@@ -15,8 +15,11 @@ const pugOptions = {
   pretty: true,
 };
 
-const getLocals = () => {
-  const req = { url: '' };
+const getLocals = pugPath => {
+  const viewPath = `/${path.relative(config.views, pugPath)}`;
+  const url = viewPath.replace(/(index\.pug|\.pug)$/gi, '');
+
+  const req = { url, originalUrl: url };
   const res = { locals: {} };
   const next = () => {};
 
@@ -27,13 +30,13 @@ const getLocals = () => {
 
 const compilePugToHtml = pugPath => {
   const template = pug.compileFile(pugPath, pugOptions);
-  const html = template(getLocals());
+  const html = template(getLocals(pugPath));
   const fileDir = path.dirname(path.relative(config.views, pugPath));
   const fileName = path.basename(pugPath, '.pug');
   const htmlPath = path.resolve(siteDir, fileDir, `${fileName}.html`);
   const htmlDir = path.dirname(htmlPath);
 
-  if (!fs.existsSync(htmlDir)) fs.mkdirSync(htmlDir);
+  if (!fs.existsSync(htmlDir)) fs.mkdirSync(htmlDir, { recursive: true });
   fs.writeFileSync(htmlPath, html);
 };
 

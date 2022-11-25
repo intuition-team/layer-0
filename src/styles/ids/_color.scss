@@ -1,0 +1,19 @@
+:root {
+  --ids__background-RGB: 255, 255, 255;
+  --ids__text-RGB: 5, 5, 5;
+  --ids__accent-RGB: 0, 0, 0;
+  --ids__main-RGB: var(--ids__accent-RGB);
+  --ids__surface-RGB: 245, 245, 245;
+  --ids__error-RGB: 240, 84, 95;
+  --ids__success-RGB: 84, 180, 140;
+  --ids__mark-RGB: 255, 248, 128;
+  --ids__code-RGB: 65, 95, 155;
+
+  --ids__on-main-RGB: var(--ids__background-RGB);
+  --ids__on-accent-RGB: var(--ids__background-RGB);
+  --ids__on-surface-RGB: var(--ids__text-RGB);
+
+  --ids__link-RGB: 0, 100, 240;
+  --ids__hover-RGB: 0, 220, 0;
+  --ids__outline-RGB: var(--ids__surface-RGB);
+}

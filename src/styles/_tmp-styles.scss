@@ -1,0 +1,140 @@
+.tmp-with-sidebar {
+  margin-left: 23%;
+
+  @media screen and #{$ids__mobile} {
+    margin-left: 0;
+  }
+}
+
+.tmp-left-sidebar {
+  position: absolute;
+  right: calc(100% + 1em);
+  text-align: right;
+  width: fit-content;
+  max-width: 23%;
+}
+
+.tmp-section-title {
+  letter-spacing: 0.2em;
+  color: RGB(var(--ids__link-RGB));
+}
+
+.tmp-colorized-space {
+  background-color: rgba(var(--ids__link-RGB), 0.3);
+
+  &.surface {
+    background-color: rgba(var(--ids__surface-RGB), 1);
+  }
+
+  &.ids__grid-cell {
+    border-right: 1px solid rgba(var(--ids__background-RGB), 1);
+    border-bottom: 1px solid rgba(var(--ids__background-RGB), 1);
+  }
+
+  @media screen and #{$ids__mobile} {
+    &.ids__stack.S {
+      height: 2em;
+    }
+  }
+}
+
+.tmp-color-sample {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.3em;
+  margin-right: 0.4em;
+
+  &.with-stroke {
+    border: 1px solid RGB(var(--ids__surface-RGB));
+  }
+}
+
+.tmp-sidebar-menu {
+  position: fixed;
+  left: 1em;
+
+  @media screen and #{$ids__mobile} {
+    position: unset;
+    margin: 1em 0 2em;
+  }
+
+  ul {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.tmp-header {
+  display: flex;
+  align-items: flex-start;
+
+  > * {
+    margin-right: 1em;
+  }
+
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    border: none;
+
+    .img-wrapper {
+      height: 1.5em;
+      width: auto;
+
+      img {
+        height: 100%;
+        width: auto;
+        padding-right: 0.5em;
+      }
+    }
+
+    &:not(.active) {
+      span {
+        border-bottom: 1px solid rgba(var(--ids__link-RGB), 0.3);
+      }
+
+      &:hover {
+        border: none;
+
+        span {
+          border-bottom-color: rgba(var(--ids__hover-RGB), 0.3);
+        }
+      }
+    }
+  }
+}
+
+.ids code,
+code pre {
+  font-family: 'PT Mono', monospace;
+  white-space: break-spaces;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-direction: row;
+
+  @media screen and #{$ids__mobile} {
+    flex-direction: column;
+  }
+
+  > * {
+    margin-right: 1em;
+
+    @media screen and #{$ids__mobile} {
+      margin-right: 0;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.code-example {
+  // margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.ids__radiogroup-toggle {
+  flex-wrap: wrap;
+}

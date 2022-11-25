@@ -1,0 +1,200 @@
+// Если есть доступ к body, надо добавить туда этот класс
+// Компоненты
+
+.ids__wrapper {
+  position: relative;
+  width: 76%;
+  margin: 0 auto;
+
+  @media screen and #{$ids__mobile} {
+    width: 100%;
+    padding: 0 calc(var(--ids__density) * 0.6em);
+  }
+
+  &.ids__full-width {
+    width: 100%;
+    padding: 0 calc(var(--ids__density) * 0.75em);
+
+    @media screen and #{$ids__mobile} {
+      padding: 0 calc(var(--ids__density) * 0.6em);
+    }
+  }
+
+  &.ids__edge-to-edge {
+    width: 100%;
+  }
+
+  &.ids__shift-right {
+    @media screen and #{$ids__desktop} {
+      padding-left: 6em;
+    }
+  }
+
+  &.ids__shift-left {
+    @media screen and #{$ids__desktop} {
+      padding-right: 6em;
+    }
+  }
+}
+
+.ids {
+  color: RGB(var(--ids__text-RGB));
+  background-color: RGB(var(--ids__background-RGB));
+  font-family: var(--ids__font);
+
+  font-size: var(--step-0);
+  line-height: var(--ids__density);
+}
+
+.ids__section {
+  margin-top: calc(var(--ids__density) * 1.5em);
+
+  @media screen and #{$ids__mobile} {
+    margin-top: calc(var(--ids__density) * 1em / 2);
+  }
+}
+
+.ids__text {
+  width: 85%;
+
+  @media screen and #{$ids__mobile} {
+    width: 100%;
+  }
+}
+
+.ids__grid {
+  margin-top: calc(var(--ids__density) * 1em);
+  display: flex;
+  flex-wrap: wrap;
+
+  &.ids__grid-align-bottom {
+    align-items: flex-end;
+  }
+
+  .ids__grid-cell {
+    width: 50%;
+
+    &.ids__grid-cell-align-bottom {
+      align-self: flex-end;
+    }
+
+    @media screen and #{$ids__mobile} {
+      width: 100%;
+    }
+  }
+
+  &.ids__grid-with-gaps {
+    justify-content: space-between;
+
+    .ids__grid-cell {
+      width: 49.5%;
+
+      @media screen and #{$ids__mobile} {
+        width: 100%;
+      }
+    }
+  }
+
+  &.XXL,
+  &.ids__grid-size-XXL {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 2);
+
+      @media screen and #{$ids__mobile} {
+        width: 100%;
+      }
+    }
+  }
+
+  &.XL,
+  &.ids__grid-size-XL {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 3);
+
+      @media screen and #{$ids__mobile} {
+        width: 100%;
+      }
+    }
+  }
+
+  &.L,
+  &.ids__grid-size-L {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 4);
+
+      @media screen and #{$ids__mobile} {
+        width: calc(100% / 2);
+      }
+    }
+  }
+
+  &.M,
+  &.ids__grid-size-M {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 5);
+
+      @media screen and #{$ids__mobile} {
+        width: calc(100% / 3);
+      }
+    }
+  }
+
+  &.S,
+  &.ids__grid-size-S {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 6);
+
+      @media screen and #{$ids__mobile} {
+        width: calc(100% / 3);
+      }
+    }
+  }
+
+  &.XS,
+  &.ids__grid-size-XS {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 7);
+
+      @media screen and #{$ids__mobile} {
+        width: calc(100% / 4);
+      }
+    }
+  }
+
+  &.XXS,
+  &.ids__grid-size-XXS {
+    //LEGACY NAME
+    .ids__grid-cell {
+      width: calc(100% / 8);
+
+      @media screen and #{$ids__mobile} {
+        width: calc(100% / 4);
+      }
+    }
+  }
+
+  &.ids__grid-inset-L {
+    .ids__grid-cell {
+      padding-right: calc(var(--ids__density) * 2em);
+      padding-bottom: calc(var(--ids__density) * 2em);
+    }
+  }
+  &.ids__grid-inset-M {
+    .ids__grid-cell {
+      padding-right: calc(var(--ids__density) * 1em);
+      padding-bottom: calc(var(--ids__density) * 1em);
+    }
+  }
+  &.ids__grid-inset-S {
+    .ids__grid-cell {
+      padding-right: calc(var(--ids__density) * 0.5em);
+      padding-bottom: calc(var(--ids__density) * 0.5em);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '~normalize.css/normalize';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}

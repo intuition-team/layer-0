@@ -1,0 +1,7 @@
+@function image-path($path) {
+  @return '#{$ids__images-path}/#{$path}';
+}
+
+img {
+  border-radius: $ids__radius-XS;
+}

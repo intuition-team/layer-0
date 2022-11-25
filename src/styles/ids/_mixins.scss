@@ -1,0 +1,169 @@
+// миксин для подключения шрифта
+$font-types: (
+  'woff': 'woff2',
+  'woff2': 'woff',
+  'ttf': 'truetype',
+  'eot': 'embedded-opentype',
+);
+
+@mixin font-face($family, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $family;
+    font-weight: $weight;
+    font-style: $style;
+    @if type-of($path) == 'string' {
+      src: font-url('#{$path}.woff2') format('woff2'),
+        font-url('#{$path}.woff') format('woff'),
+        font-url('#{$path}.ttf') format('truetype'),
+        font-url('#{$path}.eot#iefix') format('embedded-opentype');
+    } @else {
+      @each $value in map-keys($path) {
+        src: url(map-get($path, $value)) format(map-get($font-types, $value));
+      }
+    }
+  }
+}
+
+// миксин для добавления дополнительных переменных, зависящих от изменяемых переменных типографики
+@mixin typoVariables() {
+  //базовые
+  --fluid-bp: calc(
+    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+  );
+  --step-0: calc(
+    ((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) *
+      var(--fluid-bp)
+  );
+  //положительные
+  --f-1-min: calc(var(--f-0-min) * var(--type-scale));
+  --f-1-max: calc(var(--f-0-max) * var(--type-scale));
+  --step-1: calc(
+    ((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) *
+      var(--fluid-bp)
+  );
+  --f-2-min: calc(var(--f-1-min) * var(--type-scale));
+  --f-2-max: calc(var(--f-1-max) * var(--type-scale));
+  --step-2: calc(
+    ((var(--f-2-min) / 16) * 1rem) + (var(--f-2-max) - var(--f-2-min)) *
+      var(--fluid-bp)
+  );
+  --f-3-min: calc(var(--f-2-min) * var(--type-scale));
+  --f-3-max: calc(var(--f-2-max) * var(--type-scale));
+  --step-3: calc(
+    ((var(--f-3-min) / 16) * 1rem) + (var(--f-3-max) - var(--f-3-min)) *
+      var(--fluid-bp)
+  );
+  //отрицательные
+  --f--1-min: calc(var(--f-0-min) / var(--type-scale));
+  --f--1-max: calc(var(--f-0-max) / var(--type-scale));
+  --step--1: calc(
+    ((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) *
+      var(--fluid-bp)
+  );
+  --f--2-min: calc(var(--f--1-min) / var(--type-scale));
+  --f--2-max: calc(var(--f--1-max) / var(--type-scale));
+  --step--2: calc(
+    ((var(--f--2-min) / 16) * 1rem) + (var(--f--2-max) - var(--f--2-min)) *
+      var(--fluid-bp)
+  );
+}
+
+// миксин для переопределения переменных на мобильных экранах
+@mixin mediaMobile() {
+  @media screen and #{$ids__mobile} {
+    @content;
+  }
+}
+
+// любая тема состоит из названия, цветов, шрифтов и типографики
+@mixin define-theme($args) {
+  $name: map-get($args, 'name');
+
+  @if map-has-key($args, 'colors') {
+    $colors: map-get($args, 'colors');
+
+    :root .#{$name} {
+      $keys: map-keys($colors);
+
+      @each $key in $keys {
+        --ids__#{$key}-RGB: #{map-get($colors, $key)};
+      }
+    }
+  }
+
+  @if map-has-key($args, 'fonts') {
+    $fonts: map-get($args, 'fonts');
+    $name: map-get($fonts, 'name');
+
+    $regular: map-get($fonts, 'regular');
+    $medium: map-get($fonts, 'medium');
+    $bold: map-get($fonts, 'bold');
+
+    @if length($regular) + length($medium) + length($bold) > 0 {
+      :root .#{$name} {
+        --ids__font: '#{$name}', Arial, sans-serif;
+      }
+    }
+
+    @if length($regular) > 0 {
+      @include font-face('#{$name}', $regular, 400, normal);
+    }
+    @if length($medium) > 0 {
+      @include font-face('#{$name}', $medium, 500, normal);
+    }
+    @if length($bold) > 0 {
+      @include font-face('#{$name}', $bold, 700, normal);
+    }
+  }
+
+  @if map-has-key($args, 'typography') {
+    $typography: map-get($args, 'typography');
+
+    :root .#{$name} {
+      @if map-has-key($typography, 'density') {
+        --ids__density: #{map-get($typography, 'density')};
+      }
+      @if map-has-key($typography, 'desktop') {
+        $desktopTypo: map-get($typography, 'desktop');
+        $hasMin: map-has-key($desktopTypo, 'font-size-min');
+        $hasMax: map-has-key($desktopTypo, 'font-size-max');
+        $hasScale: map-has-key($desktopTypo, 'font-scale');
+
+        @if $hasMin == true {
+          --font-size-min: #{map-get($desktopTypo, 'font-size-min')};
+        }
+        @if $hasMax == true {
+          --font-size-max: #{map-get($desktopTypo, 'font-size-max')};
+        }
+        @if $hasScale == true {
+          --type-scale-desktop: #{map-get($desktopTypo, 'font-scale')};
+        }
+        @if $hasMin == true or $hasMax == true or $hasScale == true {
+          @include typoVariables();
+        }
+      }
+      @if map-has-key($typography, 'mobile') {
+        $mobileTypo: map-get($typography, 'mobile');
+        $hasMin: map-has-key($mobileTypo, 'font-size-min');
+        $hasMax: map-has-key($mobileTypo, 'font-size-max');
+        $hasScale: map-has-key($mobileTypo, 'font-scale');
+
+        @include mediaMobile() {
+          @if $hasMin == true {
+            --font-size-min-mobile: #{map-get($mobileTypo, 'font-size-min')};
+          }
+          @if $hasMax == true {
+            --font-size-max-mobile: #{map-get($mobileTypo, 'font-size-max')};
+          }
+          @if $hasScale == true {
+            --type-scale-mobile: #{map-get($mobileTypo, 'font-scale')};
+          }
+          @if $hasMin == true or $hasMax == true or $hasScale == true {
+            @include typoVariables();
+          }
+        }
+      }
+    }
+  }
+}

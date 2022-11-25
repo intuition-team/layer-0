@@ -1,0 +1,900 @@
+extends /layouts/main
+block content
+  .tmp-with-sidebar
+
+    .tmp-sidebar-menu
+      ul
+        li #[a(href='#variables') Переменные]
+          ul
+            li #[a(href='#typography') Типографика]
+              ul
+                li #[a(href='#ranges') Диапазоны]
+                li #[a(href='#font-sizes') Размеры шрифта]
+            li #[a(href='#color') Цвет]
+              ul
+                li #[a(href='#main-colors') Основные]
+                li #[a(href='#secondary-colors') Дополнительные]
+                li #[a(href='#dark-theme-colors') Для темных тем]
+        li #[a(href='#components') Компоненты]
+          ul
+            li #[a(href='#headers') Заголовки]
+            li #[a(href='#editorial') Редакционные форматы]
+            li #[a(href='#spacing') Элементы интерфейса]
+            li #[a(href='#ui') Отступы]
+            li #[a(href='#grid') Сетка]
+        li #[a(href='#wrappers') Контейнеры]
+    
+    section
+      a(href="/") ← Назад
+      .ids__stack.XS
+      h2#variables Переменные
+      p IDS позволяет настроить цветовую палитру и основные параметры типографики через css-переменные. 
+
+    section
+      h3#typography Типографика
+      p #[code --ids__font] — шрифт, по-умолчанию PT Root в начертаниях Regular, Medium и Bold.
+      p #[code --ids__density] — коэффициент плотности вёрстки.
+
+      p Размеры шрифта увеличиваются в заданных диапазонах на заданных ширинах экрана. По умолчанию это от 16 до 20 пикселей на компьютерах при ширине от 1000 до 1600 пикселей и нескалируемые 17 пикселей на телефонах при ширине от 320 до 768 пикселей.
+
+      p Заголовки увеличиваются умножением на коэффициент размерной сетки. Например, изначальное состояние 20px, коэффициент 1.5. Значит, следующий заголовок будет 30px. Следующий 45px.
+
+      p Основано на #[a(href='https://utopia.fyi/calculator') Утопии].
+
+      h4#ranges Диапазоны
+      ul
+        //- li 
+        //-   code --fluid-min-width
+        //-   | — ширина экрана, с которой начинается растяжение шрифта
+        //- li 
+        //-   code --fluid-max-width
+        //-   | — ширина, на которой растяжение заканчивается
+        //- li 
+        //-   code --fluid-screen
+        //-   | — шрифт растягивается с этим параметром (100vw). если его зафиксировать в пикселях, не растягивается
+        li 
+          code --type-scale-desktop
+          | — коэффициент размерной сетки на компьютерах
+        li 
+          code --font-size-min
+          | — минимальный размер шрифта на компьютерах
+        li 
+          code --font-size-max
+          | — максимальный размер шрифта на компьютерах
+        li 
+          code --type-scale-mobile
+          | — коэффициент размерной сетки на телефонах
+        li 
+          code --font-size-min-mobile
+          | — размер шрифта мин телефон
+        li 
+          code --font-size-max-mobile
+          | — размер шрифта макс телефон
+      
+      h4#font-sizes Размеры шрифта
+      p Получаются путём умножения #[code --step-0] на коэффициент размерной сетки #[code --type-scale-desktop] или #[code --type-scale-mobile]
+      ul
+        li
+          code --step-0
+          | — #[code h4], #[code p]. базовый шрифт, переменная с размером шрифта
+        li
+          code --step-1
+          | — h3
+        li
+          code --step-2
+          | — h2
+        li
+          code --step-3
+          | — h1
+
+
+    section
+      h3#color Цвет
+      p Цвета хранятся в виде трёх чисел RGB. Это позволяет гибко настраивать прозрачность.
+      aside
+        code
+          pre
+            p --ids__text-RGB: 5, 5, 5;
+            p color: rgba(var(--ids__text-RGB), 0.7);
+      p Чтобы задавать цвета css-переменными, используется css-функция #[code RGB()] (капсом) вместо sass-функции #[code rgb()]:
+      aside
+        code color: RGB(var(--ids__text-RGB));
+      
+      h4#main-colors Основные
+      ul
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__text-RGB));")
+          code --ids__text-RGB
+          | — цвет текста
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__link-RGB));")
+          code --ids__link-RGB
+          | — цвет ссылки
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__hover-RGB));")
+          code --ids__hover-RGB
+          | — цвет подсветки активных элементов при наведении курсора
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__accent-RGB));")
+          code --ids__accent-RGB
+          | — цвет для кнопок и других кликабельных или активных элементов; отличается от цвета бренда, чтобы оставаться заметным среди брендовых иллюстраций
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__surface-RGB));")
+          code --ids__surface-RGB
+          | — цвет для плашей, текстовых полей и других «поверхностей», лежащих «в другом визуальном слое»
+        
+      h4#secondary-colors Дополнительные
+      ul
+        li
+          .tmp-color-sample.with-stroke(style="background-color: rgb(var(--ids__background-RGB));")
+          code --ids__background-RGB
+          | — цвет фона
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__main-RGB));")
+          code --ids__main-RGB
+          | — узнаваемый цвет бренда; по умолчанию наследует #[code --ids__accent-RGB]
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__code-RGB));")
+          code --ids__code-RGB
+          | — цвет для выделения кода
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__error-RGB));")
+          code --ids__error-RGB
+          | — цвет для сообщений об ошибках
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__success-RGB));")
+          code --ids__success-RGB
+          | — цвет для сообщений об успешном выполнении
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__outline-RGB));")
+          code --ids__outline-RGB
+          | — цвет обводки для элементов в фокусе; по умолчанию наследует #[code --ids__surface-RGB]
+      
+      h4#dark-theme-colors Для тёмных тем
+      ul
+        li
+          .tmp-color-sample.with-stroke(style="background-color: rgb(var(--ids__on-accent-RGB));")
+          code --ids__on-accent-RGB
+          | — цвет текста на фоне цвета accent; по умолчанию наследует #[code --ids__background-RGB]
+        li
+          .tmp-color-sample.with-stroke(style="background-color: rgb(var(--ids__on-main-RGB));")
+          code --ids__on-main-RGB
+          | — цвет текста на фоне цвета main; по умолчанию наследует #[code --ids__background-RGB]
+        li
+          .tmp-color-sample(style="background-color: rgb(var(--ids__on-surface-RGB));")
+          code --ids__on-surface-RGB
+          | — цвет текста на фоне цвета surface; по умолчанию наследует #[code --ids__text-RGB]
+      
+      //- p Полный список переменных:
+      //- aside
+      //-   pre
+      //-     p :root {
+      //-     p   --ids__font: 'Root Ui', Arial, sans-serif;
+      //-     p   --ids__density: 1.3;
+      //-     p 
+      //-     p   --type-scale-desktop: 1.5; //коэффициент увеличения шрифта десктоп
+      //-     p   --font-size-min: 16; //размер шрифта мин десктоп
+      //-     p   --font-size-max: 20; //размер шрифта макс десктоп
+      //-     p 
+      //-     p   --type-scale-mobile: 1.333; //коэффициент увеличения шрифта телефон
+      //-     p   --font-size-min-mobile: 17; //размер шрифта мин телефон
+      //-     p   --font-size-max-mobile: 17; //размер шрифта макс телефон
+      //-     p 
+      //-     p   //цвета
+      //-     p   --ids__background-RGB: 255, 255, 255;
+      //-     p   --ids__text-RGB: 5, 5, 5;
+      //-     p   --ids__accent-RGB: 0, 0, 0;
+      //-     p   --ids__main-RGB: var(--ids__accent-RGB);
+      //-     p   --ids__surface-RGB: 245, 245, 245;
+      //-     p   --ids__error-RGB: 240, 84, 95;
+      //-     p   --ids__success-RGB: 84, 180, 140;
+      //-     p   --ids__mark-RGB: 255, 248, 128;
+      //-     p   --ids__code-RGB: 65, 95, 155;
+      //-     p 
+      //-     p   --ids__on-main-RGB: var(--ids__background-RGB);
+      //-     p   --ids__on-accent-RGB: var(--ids__background-RGB);
+      //-     p   --ids__on-surface-RGB: var(--ids__text-RGB);
+      //-     p 
+      //-     p   --ids__link-RGB: 0, 100, 240;
+      //-     p   --ids__hover-RGB: 0, 220, 0;
+      //-     p   --ids__outline-RGB: var(--ids__surface-RGB);
+      //-     p }
+    
+    section
+      .ids__stack.S
+      h2#components Компоненты 
+    
+    section
+      //- .ids__stack.XS
+      h6.tmp-section-title#headers Заголовки
+      
+      //- .ids__stack.XS
+      h1 Прочный дизайн
+      .code-example
+        aside
+          code h1 Прочный дизайн
+      
+      .ids__stack.XS
+      h2 Язык, который всё улучшает
+      .code-example
+        aside
+          code h2 Язык, который всё улучшает
+      
+      .ids__stack.XS
+      h3 Как придумать язык
+      .code-example
+        aside
+          code h3 Как придумать язык
+      
+      .ids__stack.XS
+      h4 Раскладывать по полочкам и заработать на квартиру
+      .code-example
+        aside
+          code h4 Смотрим сквозь дизайн
+      
+      .ids__stack.XS
+      h5 Хочет больше дизайна
+      .code-example
+        aside
+          code h5 Хочет больше дизайна
+      
+      .ids__stack.XS
+      h6 Почему это бесит
+      .code-example
+        aside
+          code h6 Почему это бесит
+    
+    section
+      .ids__stack.XS
+      h6.tmp-section-title#editorial Редакционные форматы
+      .ids__stack.XS
+      p Это такой специальный ярлычок для перекладывания ответственности. Бывает, что у клиента всегда всё срочно, он пытается хозяйничать в макетах, хочет больше дизайна и совместить все варианты в одном, пропадает, забывает, сомневается, говорит глупости, цепляется к ерунде, а потом приносит свой вариант и сам с собой не может договориться.
+      .code-example
+        aside
+          code p Это такой специальный ярлычок для перекладывания ответственности. Бывает, что у клиента всегда всё срочно, он пытается хозяйничать в макетах, хочет больше дизайна и совместить все варианты в одном, пропадает, забывает, сомневается, говорит глупости, цепляется к ерунде, а потом приносит свой вариант и сам с собой не может договориться.
+
+      .ids__stack.XS
+      .ids__lead И отлично — он виноват, мы в домике, сидим и ждём лёгкого клиента, а пока временно страдаем.
+      .code-example
+        aside
+          code p.ids__lead И отлично — он виноват, мы в домике, сидим и ждём лёгкого клиента, а пока временно страдаем.
+
+    section
+      h2 Что происходит <mark>на самом деле</mark>
+      .code-example
+        aside
+          code #{'h2 Что происходит #[mark на самом деле]'}
+
+      .ids__stack.XS
+      p У кого-то могут включаться голоса: «это потому что ты неудачник и у тебя никогда ничего не получается и тебя все ненавидят но ты же ничего другого не умеешь всё равно так что ничего тут уже не сделаешь терпи». Это снова <mark>вот такой человек</mark>, только в обратную сторону.
+      .code-example
+        aside
+          code #{'p У кого-то могут включаться голоса: «это потому что ты неудачник и у тебя никогда ничего не получается и тебя все ненавидят но ты же ничего другого не умеешь всё равно так что ничего тут уже не сделаешь терпи». Это снова #[mark вот такой человек], только в обратную сторону.'}
+
+      .ids__stack.XS
+      blockquote Ничего не надо делать
+      .code-example
+        aside
+          code blockquote Ничего не надо делать
+
+      .ids__stack.XS
+      ol
+        li Пункт номер 1
+        li Пункт номер 2
+        li Пункт номер 3
+      .code-example
+        aside
+          code
+            pre
+              | ol
+              |   li Пункт номер 1
+              |   li Пункт номер 2
+              |   li Пункт номер 3
+
+      .ids__stack.XS
+      ul
+        li Пункт номер 1
+        li Пункт номер 2
+        li Пункт номер 3
+      .code-example
+        aside
+          code
+            pre
+              | ul
+              |   li Пункт номер 1
+              |   li Пункт номер 2
+              |   li Пункт номер 3
+
+      .ids__stack.XS
+      ul.checked
+        li Пункт номер 1
+        li Пункт номер 2
+        li Пункт номер 3
+      .code-example
+        aside
+          code
+            pre
+              | ul.checked
+              |   li Пункт номер 1
+              |   li Пункт номер 2
+              |   li Пункт номер 3
+
+      .ids__stack.XS
+      .ids__label(style="margin-bottom: 0.5em;") Привычка №1
+      .code-example
+        aside
+          code .ids__label Привычка №1
+
+      .ids__stack.XS
+      .ids__label.ids__label-outline(style="margin-bottom: 0.5em;") Просто прелестно
+      .code-example
+        aside
+          code .ids__label.ids__label-outline Просто прелестно
+
+      .ids__stack.XS
+      details
+        summary Пара историй из жизни
+        .ids__stack.XS
+        p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
+      .code-example
+        aside
+          code
+            pre
+              | details
+              |   summary Пара историй из жизни
+              |   p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
+
+      .ids__stack.XS
+      aside
+        p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
+      .code-example
+        aside
+          code
+            pre
+              | aside
+              |   p Я пришёл на встречу с главным инженером, чтобы обсудить всякие детали — мы уже довольно долго искали баланс между желаниями и возможностями, вроде что-то нащупывалось, решили ускорить процесс и обсудить лично.
+
+
+    section
+      p Иллюстрация с подписью:
+      figure
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+        figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
+      .code-example
+        aside
+          code
+            pre
+              | figure
+              |   img(src="/images/example-pic.jpg")
+              |   figcaption Mystical scene of a cabin on a hill. ©Julian Steenbergen
+
+    section
+      p Модификаторы
+
+      .code-example
+        aside
+          code
+            pre
+              | figure.XXS
+              |   img(src="/images/example-pic.jpg")
+      
+      .code-example
+        code .XXS
+      figure.XXS
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+
+      .code-example
+        code .XS
+      figure.XS
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+
+      .code-example
+        code .S
+      figure.S
+        img(src="https://images.unsplash.com/photo-1628583768483-a762d81fa84c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2779&q=80")
+
+    section
+      .ids__stack.S
+      h6.tmp-section-title#spacing Отступы
+
+      .ids__stack.XS
+      .code-example
+        code .ids__stack.XS
+      .ids__stack.XS.tmp-colorized-space
+
+      .ids__stack.XS
+      .code-example
+        code .ids__stack.S
+      .ids__stack.S.tmp-colorized-space
+
+      .ids__stack.XS
+      .code-example
+        code .ids__stack.M
+      .ids__stack.M.tmp-colorized-space
+
+      .ids__stack.XS
+      .code-example
+        code .ids__stack.L
+      .ids__stack.L.tmp-colorized-space
+
+      .ids__stack.XS
+      .code-example
+        code .ids__stack.XL
+      .ids__stack.XL.tmp-colorized-space
+    
+    section
+      .ids__stack.S
+      h6.tmp-section-title#ui Элементы интерфейса
+
+      //- кнопка
+      .ids__stack.XS
+      button(style="margin-bottom: 0.5em;") Отправить
+      .code-example
+        aside
+          code button Отправить
+      
+      .ids__stack.XS
+      p Модификаторы:
+      
+      .flex-wrap
+        div
+          .code-example
+            code button.XS
+          button.XS Отправить
+        div
+          .code-example
+            code .S
+          button.S Отправить
+        div
+          .code-example
+            code .M
+          button.M Отправить
+        div
+          .code-example
+            code .L
+          button.L Отправить
+        div
+          .code-example
+            code .XL
+          button.XL Отправить
+
+      //- кнопка-ссылка
+      .ids__stack.S
+      a.ids__button-link(href="/design-system" style="margin-bottom: 0.5em;") Заполнить заявку
+      .code-example
+        aside
+          code a.ids__button-link(href="/design-system") Заполнить заявку
+
+      //- поле ввода
+      .ids__stack.S
+      input(type='text' placeholder='Текст' style="margin-bottom: 0.5em;")
+      .code-example
+        aside
+          code input(type='text' placeholder='Текст')
+      
+      .ids__stack.XS
+      p Модификаторы:
+      .flex-wrap
+        div
+          .code-example
+            code input.XS
+          input.XS(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .S
+          input.S(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .M
+          input.M(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .L
+          input.L(type='text' placeholder='Текст')
+        div
+          .code-example
+            code .XL
+          input.XL(type='text' placeholder='Текст')
+
+      .ids__stack.S
+      .ids__form-error-message(style="margin-bottom: 1em;") Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]
+      .code-example
+        aside
+          code .ids__form-error-message #{'Этот адрес уже используется. Если вы хотите купить книгу заново, нужен другой адрес, а если вы хотите войти, #[a(href="") войдите]'}
+      
+      .ids__stack.XS
+      .ids__form-success-message(style="margin-bottom: 1em;") Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста
+      .code-example
+        aside
+          code .ids__form-success-message #{'Мы отправили ссылку для входа — проверьте #[a(href="") почту], пожалуйста'}
+      
+      //- поле ввода подчеркнутое
+      .ids__stack.S
+      input.ids__input-text-line(type='text' placeholder='Текст')
+      .code-example
+        aside
+          code input.ids__input-text-line(type='text' placeholder='Текст')
+
+      //- текстовая зона
+      .ids__stack.S
+      textarea(placeholder='Текст' style="margin-bottom: 0.5em;")
+      .code-example
+        aside
+          code textarea(placeholder='Текст')
+      
+      //- селект
+      .ids__stack.S
+      .ids__select(style="margin-bottom: 0.5em;")
+        select
+          option Кошки
+          option Собаки
+          option Лягушки
+          option Кроты
+          option Хомяки
+          option Баклажаны
+      .code-example
+        aside
+          code
+            pre
+              | .ids__select
+              |   select
+              |     option Кошки
+              |     option Собаки
+              |     option Лягушки
+              |     option Кроты
+              |     option Хомяки
+              |     option Баклажаны
+
+      //- чекбокс
+      .ids__stack.S
+      .ids__checkbox(style="margin-bottom: 0.5em;")
+        input(type='checkbox' id="checkbox-sample")
+        label(for="checkbox-sample") Согласен, что данные обработаются
+      .code-example
+        aside
+          code
+            pre
+              | .ids__checkbox
+              |   input(type='checkbox' id="checkbox-sample")
+              |   label(for="checkbox-sample") Согласен, что данные обработаются
+
+      //- радио-группа
+      .ids__stack.S
+      .ids__radio(style="margin-bottom: 0.5em;")
+        input(type='radio' id='radio-sample-1' name='radio-sample' checked)
+        label(for='radio-sample-1') Курица
+        br
+        input(type='radio' id='radio-sample-2' name='radio-sample')
+        label(for='radio-sample-2') Рыба
+        br
+        input(type='radio' id='radio-sample-3' name='radio-sample')
+        label(for='radio-sample-3') Ни то, ни другое
+      .code-example
+        aside
+          code
+            pre
+              | input(type='radio' id='radio-sample-1' name='radio-sample' checked)
+              | label(for='radio-sample-1') Курица
+              | br
+              | input(type='radio' id='radio-sample-2' name='radio-sample')
+              | label(for='radio-sample-2') Рыба
+              | br
+              | input(type='radio' id='radio-sample-3' name='radio-sample')
+              | label(for='radio-sample-3') Ни то, ни другое
+
+      .ids__stack.S
+      .flex-wrap
+        div
+          .code-example
+            code .ids__radiogroup-toggle
+          .ids__radiogroup-toggle
+            .ids__radiogroup-option
+              input(type='radio' id='option1' name='radio-toggle-sample' checked)
+              label(for='option1') Понедельник
+            .ids__radiogroup-option
+              input(type='radio' id='option2' name='radio-toggle-sample')
+              label(for='option2') Вторник
+            .ids__radiogroup-option
+              input(type='radio' id='option3' name='radio-toggle-sample')
+              label(for='option3') Среда
+            .ids__radiogroup-option
+              input(type='radio' id='option4' name='radio-toggle-sample')
+              label(for='option4') Четверг
+        div
+          .code-example
+            code .ids__radiogroup-toggle.monochrome
+          .ids__radiogroup-toggle.monochrome
+            .ids__radiogroup-option
+              input(type='radio' id='option01' name='radio-toggle-mono-sample' checked)
+              label(for='option01') Понедельник
+            .ids__radiogroup-option
+              input(type='radio' id='option02' name='radio-toggle-mono-sample')
+              label(for='option02') Вторник
+            .ids__radiogroup-option
+              input(type='radio' id='option03' name='radio-toggle-mono-sample')
+              label(for='option03') Среда
+            .ids__radiogroup-option
+              input(type='radio' id='option04' name='radio-toggle-mono-sample')
+              label(for='option04') Четверг
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__radiogroup-toggle
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option1' name='radio-toggle-sample' checked)
+              |     label(for='option1') Понедельник
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option2' name='radio-toggle-sample')
+              |     label(for='option2') Вторник
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option3' name='radio-toggle-sample')
+              |     label(for='option3') Среда
+              |   .ids__radiogroup-option
+              |     input(type='radio' id='option4' name='radio-toggle-sample')
+              |     label(for='option4') Четверг
+
+      .ids__stack.S
+      table
+        tr 
+          th Первая версия 
+          th Цикл
+          th Поток
+        tr 
+          td Лендинг, рекламная кампания
+          td Раздел сайта, редактор статей
+          td Иллюстрации для статей
+        tr 
+          td MVP
+          td Спринт
+          td Конвейер
+        tr 
+          td Минимальный
+          td Подробный
+          td Вместо плана — чёткий процесс
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | table
+              |   tr 
+              |     th Первая версия 
+              |     th Цикл
+              |     th Поток
+              |   tr 
+              |     td Лендинг, рекламная кампания
+              |     td Раздел сайта, редактор статей
+              |     td Иллюстрации для статей
+              |   tr 
+              |     td MVP
+              |     td Спринт
+              |     td Конвейер
+              |   tr 
+              |     td Минимальный
+              |     td Подробный
+              |     td Вместо плана — чёткий процесс
+    
+    section
+      .ids__stack.S
+      h6.tmp-section-title#grid Сетка
+      p Модификатор размера регулирует количество колонок сетки. Например, XXL — 2 колонки, XL — 3, L — 4, и так далее до XXS — 8 колонок.
+
+      .ids__grid.XXL.ids__grid-inset-S
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+            p Текст в ячейке
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+            p Текст в ячейке
+      .code-example
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-S
+              |   .ids__grid-cell
+              |     p Текст в ячейке
+              |   .ids__grid-cell
+              |     p Текст в ячейке
+      
+      .ids__grid.XL.ids__grid-inset-S
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.XL
+      
+      .ids__grid.L.ids__grid-inset-S
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.L
+      
+      .ids__grid.M.ids__grid-inset-S
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.M
+      
+      .ids__grid.S.ids__grid-inset-S
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.S
+      
+      .ids__grid.XS.ids__grid-inset-S
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.XS
+      
+      .ids__grid.XXS.ids__grid-inset-S
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example
+        aside
+          code .ids__grid.XXS
+      
+
+
+      .ids__stack.S
+      p Правый и нижний отступ ячейки #[code .ids__grid-inset]
+      
+      .ids__grid.XXL.ids__grid-inset-L
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-L
+              |   .ids__grid-cell
+              |   .ids__grid-cell
+      
+      .ids__grid.XXL.ids__grid-inset-M
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-M
+      
+      .ids__grid.XXL.ids__grid-inset-S
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell.tmp-colorized-space
+          .tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL.ids__grid-inset-S
+      
+      .ids__grid.XXL
+        .ids__grid-cell.tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+        .ids__grid-cell.tmp-colorized-space
+          .ids__stack.S.tmp-colorized-space
+      .code-example(style="margin-top: 0.5em;")
+        aside
+          code
+            pre
+              | .ids__grid.XXL
+              |   .ids__grid-cell
+              |   .ids__grid-cell
+    
+    section
+      .ids__stack.S
+      h2#wrappers Контейнеры
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper] — контейнер шириной 76%, автоматически выравнивается по центру маржинами
+      .ids__wrapper.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__full-width] — модификация с шириной 100% и паддингами
+      .tmp-colorized-space
+        .ids__wrapper.ids__full-width
+          .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__edge-to-edge] — модификация с шириной 100% без паддингов
+      .tmp-colorized-space
+        .ids__wrapper.ids__edge-to-edge
+          .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__shift-right] — контейнер шириной 76% с паддингом справа
+      .ids__wrapper.ids__shift-right.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__wrapper.ids__shift-left] — контейнер шириной 76% с паддингом слева
+      .ids__wrapper.ids__shift-left.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+      
+      .ids__stack.XS
+      p #[code .ids__text] — контейнер шириной 85%, в мобильной версии 100%
+      .ids__text.tmp-colorized-space
+        .ids__stack.M.tmp-colorized-space
+
+
+    section
+      .ids__stack.L
