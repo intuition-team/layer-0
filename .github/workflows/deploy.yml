@@ -30,8 +30,9 @@ jobs:
         run: yarn build
 
       - name: Copy application to the target server
-        uses: easingthemes/ssh-deploy@v2.1.1
+        uses: easingthemes/ssh-deploy@v3.0.1
         env:
+          REMOTE_PORT: 22 -v -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-qazP --delete --exclude .env"
           SOURCE: /
